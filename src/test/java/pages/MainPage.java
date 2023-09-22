@@ -27,7 +27,6 @@ public class MainPage extends BasePage {
     private WebElement createPasteBtn;
 
     public MainPage(WebDriver driver) {
-        // базовый класс для пейджпей наследуется каждый раз в потомках через super
         super(driver);
         PageFactory.initElements(driver, this);
     }

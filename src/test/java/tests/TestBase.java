@@ -12,6 +12,7 @@ import java.time.Duration;
 abstract public class TestBase {
     protected WebDriver driver;
     MainPage mainPage = new MainPage(driver);
+    TestData data = new TestData();
 
 
     @BeforeEach

@@ -13,6 +13,6 @@ public class PastebinTest extends TestBase {
         mainPage
                 .open()
                 .removeAdd()
-                .createNewPaste("Hello from WebDriver", "helloweb");
+                .createNewPaste(data.pasteValue, data.nameValue);
     }
 }
