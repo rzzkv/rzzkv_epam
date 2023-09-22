@@ -9,8 +9,9 @@ public class PastebinTest extends TestBase {
     However, I am putting it in advance so that I can easily add assertions later. */
     @Test
     public void checkNewPaste() {
-        MainPage mainPage = new MainPage(driver);
-        mainPage.open()
+
+        mainPage
+                .open()
                 .removeAdd()
                 .createNewPaste("Hello from WebDriver", "helloweb");
     }

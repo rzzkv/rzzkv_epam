@@ -5,11 +5,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.MainPage;
 
 import java.time.Duration;
 
 abstract public class TestBase {
     protected WebDriver driver;
+    MainPage mainPage = new MainPage(driver);
+
 
     @BeforeEach
     public void setUp() {
