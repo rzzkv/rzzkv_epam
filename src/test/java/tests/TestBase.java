@@ -6,13 +6,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
+import pages.PastePage;
 
 import java.time.Duration;
 
 abstract public class TestBase {
     protected WebDriver driver;
     TestData data = new TestData();
-
 
     @BeforeEach
     public void setUp() {

@@ -2,17 +2,25 @@ package tests;
 
 import org.junit.jupiter.api.Test;
 import pages.MainPage;
+import pages.PastePage;
+
+import static java.lang.Thread.sleep;
 
 public class PastebinTest extends TestBase {
 
- /* Wasn't sure about @Test annotation and method name, because it is not a test without assertions.
-    However, I am putting it in advance so that I can easily add assertions later. */
     @Test
-    public void checkNewPaste() {
+    public void checkNewPaste() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
+        PastePage pastePage = new PastePage(driver);
+
         mainPage
                 .open()
                 .removeAdd()
                 .createNewPaste(data.pasteValue, data.nameValue);
+        pastePage
+                .checkTitle(data.nameValue)
+                .checkSyntax(data.syntaxBash)
+                .checkCode(data.pasteValue);
+
     }
 }

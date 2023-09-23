@@ -17,6 +17,10 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath = "//textarea[@id='postform-text']")
     private WebElement pasteArea;
+    @FindBy(xpath = "//span[@id='select2-postform-format-container']")
+    private WebElement syntaxHighlighting;
+    @FindBy(xpath = "//li[text()='Bash']")
+    private WebElement syntaxHighlightingSet;
     @FindBy(xpath = "//span[@id='select2-postform-expiration-container']")
     private WebElement pasteExpiration;
     @FindBy(xpath = "//li[text()='10 Minutes']")
@@ -27,6 +31,7 @@ public class MainPage extends BasePage {
     private WebElement createPasteBtn;
 
     public MainPage(WebDriver driver) {
+        // базовый класс для пейджпей наследуется каждый раз в потомках через super
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -48,6 +53,8 @@ public class MainPage extends BasePage {
 
     public MainPage createNewPaste(String pasteValue, String nameValue) {
         pasteArea.click();
+        syntaxHighlighting.click();
+        syntaxHighlightingSet.click();
         pasteArea.sendKeys(pasteValue);
         pasteExpiration.click();
         pasteExpirationSet.click();
