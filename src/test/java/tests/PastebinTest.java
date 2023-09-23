@@ -9,7 +9,7 @@ import static java.lang.Thread.sleep;
 public class PastebinTest extends TestBase {
 
     @Test
-    public void checkNewPaste() throws InterruptedException {
+    public void checkNewPaste(){
         MainPage mainPage = new MainPage(driver);
         PastePage pastePage = new PastePage(driver);
 
