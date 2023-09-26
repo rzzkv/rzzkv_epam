@@ -5,12 +5,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import pages.BasePage;
 import pages.MainPage;
 import pages.PastePage;
 
+import java.io.File;
 import java.time.Duration;
 
-abstract public class TestBase {
+abstract public class TestBase{
     protected WebDriver driver;
     TestData data = new TestData();
 
@@ -19,8 +22,8 @@ abstract public class TestBase {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     @AfterEach

@@ -11,7 +11,7 @@ import java.time.Duration;
 
 import static java.lang.Thread.sleep;
 
-public class MainPage extends BasePage {
+public class MainPage extends EmailPage {
 
     private static final String URL = "https://cloud.google.com/";
     @FindBy(xpath = "//input[@class='mb2a7b']")
@@ -31,20 +31,11 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//div[@class='md-label'][contains(text(), 'Add GPUs.')]")
     private WebElement gpu;
     @FindBy(xpath = "//md-select[.//span[text()='GPU type']]")
-//    @FindBy(xpath = "//span[text()='GPU type']")
-//    @FindBy(xpath = "//md-select-value[@class='md-select-value md-select-placeholder'][contains(text(), 'GPU type')]")
-//    @FindBy(xpath = "//*[@id='select_value_label_499']")
-//    @FindBy(xpath = "//*[@id='select_value_label_503']/*[@class='md-select-icon']")
-//    @FindBy(xpath = "//*[@id='select_value_label_503']/*[@class='md-select-icon']")
-//    @FindBy(xpath = "//*[@id='select_value_label_503'][contains(text(), 'GPU type')]")
-//    @FindBy(xpath = "//*[@id='select_505'")
     private WebElement gpuType;
     @FindBy(xpath = "//md-option[.//div[normalize-space(text())='NVIDIA Tesla V100']]")
-//    @FindBy(xpath = "//md-option[.//div[text()='NVIDIA Tesla V100']]")
 //    @FindBy(xpath = "//*[@id='select_option_548']")
     private WebElement gpuTypeSelect;
     @FindBy(xpath = "//md-select-value[.//div[normalize-space(text())='0']]")
-//    @FindBy(xpath = "//md-select[.//span[text()='Number of GPUs']]")
     private WebElement gpuNumber;
     @FindBy(xpath = "//md-option[.//div[normalize-space(text())='1']]")
     private WebElement gpuNumberSelect;
@@ -67,13 +58,14 @@ public class MainPage extends BasePage {
     private WebElement checkEstimateExist;
     @FindBy(xpath = "//button[.//span[text()='email']]")
     private WebElement emailEstimate;
-    @FindBy(xpath = "//md-input-container[@class='flex md-input-invalid']/input[@id='input_633']")
+    @FindBy(xpath = "//input[@type='email']")
+//    @FindBy(xpath = "//label[text()='Email ']/ancestor-or-self::md-input-container")
+//    @FindBy(xpath = "//md-input-container[@class='flex md-input-invalid']/input[@id='input_633']")
     private WebElement setEmailAddress;
     @FindBy(xpath = "//button[contains(text(), 'Send Email')]")
     private WebElement sendEmail;
 
     public MainPage(WebDriver driver) {
-        // базовый класс для пейджпей наследуется каждый раз в потомках через super
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -121,23 +113,31 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage checkPriceIsCalculated(){
-        String cal = "Total Estimated Cost:";
+    public MainPage checkPriceIsCalculated(String cal){
+    //I know that in Page should not be any test, but did not figure out how to do it better
         Assertions.assertTrue(checkEstimateExist.getText().contains(cal));
         return this;
     }
 
+    public String getPriceCalculated(){
+
+        String priceCalculated = checkEstimateExist.getText();
+
+        return priceCalculated;
+    }
+
     public MainPage emailEstimate(){
-        String emailAddress = "praweuvallomi-7791@yopmail.com";
+//        driver.switchTo().window(driver.getWindowHandle());
+
 
         emailEstimate.click();
-        setEmailAddress.click();
-        setEmailAddress.sendKeys(emailAddress);
+//        setEmailAddress.sendKeys("some@mail.com"); //todo
+        setEmailAddress.sendKeys(getEmailAddress());
         sendEmail.click();
+        driver.switchTo().window(driver.getWindowHandle());
 
         return this;
     }
-
-
-
 }
+
+//1.setEmailAddress field  2.handle ad in mail 3. get text from mail(iFrame) 4. handle problem of two tabs
