@@ -15,7 +15,6 @@ public class cloudGoogleTest extends TestBase {
         MainPage mainPage = new MainPage(driver);
         EmailPage emailPage = new EmailPage(driver);
 
-
         mainPage
                 .open()
                 .searchCalculator(data.searchValue)
@@ -23,24 +22,28 @@ public class cloudGoogleTest extends TestBase {
                 .setUpForm(data.instanceValue)
                 .checkPriceIsCalculated(data.cal);
 
-        emailPage
-                .createEmailAddress();
-
-        mainPage
-                .emailEstimate();
+        emailPage.createEmailAddress();
+        emailPage.switchToAnotherTab();
+        mainPage.emailEstimate();
+        emailPage.getEmailMessage();
 
 //        Assertions.assertTrue(
 //                emailPage.getEmailMessage()
 //                    .contains(mainPage.getPriceCalculated()));
     }
 
-//    @Test
-//    public void createEmailAddress(){
-//        emailPage
-//                .open()
-//                .createRandomEmail()
-//                .getEmailAddress(); //todo delete this method
-//    }
+    @Test
+    public void createEmailAddress() throws InterruptedException { //todo delete this method
+        EmailPage emailPage = new EmailPage(driver);
+
+        emailPage
+                .open()
+                .createRandomEmail()
+                .getEmailAddress();
+        System.out.println(emailPage.getEmailMessage());
+
+
+    }
 }
 
 // add additional unit tests or separate to small tests

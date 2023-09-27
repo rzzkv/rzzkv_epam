@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Set;
 
 import static java.lang.Thread.sleep;
 
@@ -129,15 +130,17 @@ public class MainPage extends EmailPage {
     public MainPage emailEstimate(){
 //        driver.switchTo().window(driver.getWindowHandle());
 
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
+        driver.switchTo().frame(driver.findElement(By.id("myFrame")));
 
         emailEstimate.click();
-//        setEmailAddress.sendKeys("some@mail.com"); //todo
+        setEmailAddress.click();
+//        setEmailAddress.sendKeys("998936236723@yandex.ru"); //todo
         setEmailAddress.sendKeys(getEmailAddress());
         sendEmail.click();
-        driver.switchTo().window(driver.getWindowHandle());
+        driver.switchTo().window(switchToAnotherTab());
 
         return this;
     }
 }
 
-//1.setEmailAddress field  2.handle ad in mail 3. get text from mail(iFrame) 4. handle problem of two tabs

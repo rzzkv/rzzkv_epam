@@ -31,6 +31,8 @@ public class EmailPage extends BasePage {
     private WebElement refreshButton;
     @FindBy(xpath = "//div[@id='mail']")
     private WebElement mailField;
+    @FindBy(xpath = "//*[@id='google_esf']")
+    WebElement adFrame;
 
     public EmailPage(WebDriver driver) {
         super(driver);
@@ -44,31 +46,32 @@ public class EmailPage extends BasePage {
 
     public EmailPage createRandomEmail() {
         randomEmail.click();
-        return this;
-    }
-
-    public EmailPage removeAdd(){ // todo
-
+        if(adFrame.isEnabled()) {
+            driver.get("https://yopmail.com/en/email-generator");
+//            driver.navigate().refresh();
+//            randomEmail.click();
+        }
         return this;
     }
 
     public String getEmailAddress() {
+        System.out.println(emailAddress.getText() + "@yopmail.com");
         return emailAddress.getText() + "@yopmail.com";
+
     }
 
-    public EmailPage checkMessage() {
-        checkInbox.click();
-        return this;
-    }
+//    public EmailPage checkMessage() {
+//        checkInbox.click();
+//        return this;
+//    }
 
     public String getEmailMessage() throws InterruptedException {
 
+        driver.navigate().refresh();
+        checkInbox.click();
         refreshButton.click();
-        driver.switchTo().frame(driver.findElement(By.id("myFrame")));
+        driver.switchTo().frame(driver.findElement(By.id("ifmail")));
         if(!mailField.isDisplayed()){
-// can not use this, since id would not presence without refresh
-//      new WebDriverWait(driver, Duration.ofSeconds(10))
-//                    .until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.id("mail")));
             mailField.wait(5000);
             refreshButton.click();
         }
@@ -80,9 +83,17 @@ public class EmailPage extends BasePage {
                 open();
                 createRandomEmail();
                 getEmailAddress();
-        Set<String> windowHandles = driver.getWindowHandles();
-        driver.switchTo().window(windowHandles.iterator().next());
+//        Set<String> windowHandles = driver.getWindowHandles();
+//        driver.switchTo().window(windowHandles.iterator().next());
 
+    }
+
+    public String switchToAnotherTab(){
+        Set<String> windowHandles = driver.getWindowHandles();
+        String tab1Handle = windowHandles.iterator().next();
+        String tab2Handle = windowHandles.stream().filter(handle -> !handle.equals(tab1Handle)).findFirst().get();
+        driver.switchTo().window(tab1Handle);
+        return tab2Handle;
     }
 
 }
