@@ -19,7 +19,7 @@ public class EmailPage extends BasePage {
 
     @FindBy(xpath = "//*[@href='email-generator']")
     private WebElement randomEmail;
-    @FindBy(xpath = "//span[@class='genytxt']")
+    @FindBy(xpath = "//div[@id='geny']")
     private WebElement emailAddress;
     @FindBy(xpath = "//*[text()='Check Inbox']")
     private WebElement checkInbox;
@@ -48,26 +48,16 @@ public class EmailPage extends BasePage {
         randomEmail.click();
         if(adFrame.isEnabled()) {
             driver.get("https://yopmail.com/en/email-generator");
-//            driver.navigate().refresh();
-//            randomEmail.click();
         }
         return this;
     }
 
     public String getEmailAddress() {
-        System.out.println(emailAddress.getText() + "@yopmail.com");
-        return emailAddress.getText() + "@yopmail.com";
-
+        return emailAddress.getText();
     }
-
-//    public EmailPage checkMessage() {
-//        checkInbox.click();
-//        return this;
-//    }
 
     public String getEmailMessage() throws InterruptedException {
 
-        driver.navigate().refresh();
         checkInbox.click();
         refreshButton.click();
         driver.switchTo().frame(driver.findElement(By.id("ifmail")));
@@ -83,9 +73,6 @@ public class EmailPage extends BasePage {
                 open();
                 createRandomEmail();
                 getEmailAddress();
-//        Set<String> windowHandles = driver.getWindowHandles();
-//        driver.switchTo().window(windowHandles.iterator().next());
-
     }
 
     public String switchToAnotherTab(){

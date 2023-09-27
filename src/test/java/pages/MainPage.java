@@ -4,11 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.Set;
 
 import static java.lang.Thread.sleep;
 
@@ -57,6 +52,9 @@ public class MainPage extends EmailPage {
     private WebElement addToEstimate;
     @FindBy(xpath = "//md-card-content[@id='resultBlock']")
     private WebElement checkEstimateExist;
+
+    @FindBy(xpath = "//div[@class='cpc-cart-total']")
+    private WebElement cartTotal;
     @FindBy(xpath = "//button[.//span[text()='email']]")
     private WebElement emailEstimate;
     @FindBy(xpath = "//input[@type='email']")
@@ -89,7 +87,6 @@ public class MainPage extends EmailPage {
     }
 
     public MainPage setUpForm(int instanceValue){
-
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
         driver.switchTo().frame(driver.findElement(By.id("myFrame")));
 
@@ -114,32 +111,24 @@ public class MainPage extends EmailPage {
         return this;
     }
 
-    public MainPage checkPriceIsCalculated(String cal){
+    public void checkPriceIsCalculated(String cal){
     //I know that in Page should not be any test, but did not figure out how to do it better
         Assertions.assertTrue(checkEstimateExist.getText().contains(cal));
-        return this;
     }
 
     public String getPriceCalculated(){
-
-        String priceCalculated = checkEstimateExist.getText();
-
-        return priceCalculated;
+        return cartTotal.getText().replace("Total Estimated Cost: ", "").replace(" per 1 month", "");
     }
 
-    public MainPage emailEstimate(){
-//        driver.switchTo().window(driver.getWindowHandle());
-
+    public MainPage emailEstimate(String emailAddress){
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
         driver.switchTo().frame(driver.findElement(By.id("myFrame")));
 
         emailEstimate.click();
         setEmailAddress.click();
-//        setEmailAddress.sendKeys("998936236723@yandex.ru"); //todo
-        setEmailAddress.sendKeys(getEmailAddress());
+        setEmailAddress.sendKeys(emailAddress);
         sendEmail.click();
         driver.switchTo().window(switchToAnotherTab());
-
         return this;
     }
 }

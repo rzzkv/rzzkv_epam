@@ -9,7 +9,6 @@ import static java.lang.Thread.sleep;
 
 public class cloudGoogleTest extends TestBase {
 
-
     @Test
     public void checkNewPaste() throws InterruptedException {
         MainPage mainPage = new MainPage(driver);
@@ -22,29 +21,18 @@ public class cloudGoogleTest extends TestBase {
                 .setUpForm(data.instanceValue)
                 .checkPriceIsCalculated(data.cal);
 
+        String totalCost = mainPage.getPriceCalculated();
         emailPage.createEmailAddress();
+        String emailAddress = emailPage.getEmailAddress();
+
         emailPage.switchToAnotherTab();
-        mainPage.emailEstimate();
-        emailPage.getEmailMessage();
+        mainPage.emailEstimate(emailAddress);
+        String mailMessage = emailPage.getEmailMessage();
 
-//        Assertions.assertTrue(
-//                emailPage.getEmailMessage()
-//                    .contains(mainPage.getPriceCalculated()));
-    }
-
-    @Test
-    public void createEmailAddress() throws InterruptedException { //todo delete this method
-        EmailPage emailPage = new EmailPage(driver);
-
-        emailPage
-                .open()
-                .createRandomEmail()
-                .getEmailAddress();
-        System.out.println(emailPage.getEmailMessage());
-
-
+        Assertions.assertTrue(mailMessage.contains(totalCost));
     }
 }
+
 
 // add additional unit tests or separate to small tests
 // delete test  from emailPage
