@@ -40,7 +40,6 @@ public class MainPage extends BasePage {
         WebElement popupAd = wait.until(ExpectedConditions.presenceOfElementLocated
                 (By.xpath("//div[@id='vi-smartbanner']")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].remove()", popupAd);
-
         return this;
     }
 
