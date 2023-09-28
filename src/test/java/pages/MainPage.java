@@ -13,8 +13,6 @@ import java.time.Duration;
 
 public class MainPage extends BasePage {
 
-    private static final String URL = "https://pastebin.com/";
-
     @FindBy(xpath = "//textarea[@id='postform-text']")
     private WebElement pasteArea;
     @FindBy(xpath = "//span[@id='select2-postform-expiration-container']")
@@ -31,7 +29,7 @@ public class MainPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public MainPage open(){
+    public MainPage open(String URL){
         driver.get(URL);
         return this;
     }

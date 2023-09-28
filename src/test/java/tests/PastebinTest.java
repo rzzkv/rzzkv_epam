@@ -11,7 +11,7 @@ public class PastebinTest extends TestBase {
     public void checkNewPaste() {
         MainPage mainPage = new MainPage(driver);
         mainPage
-                .open()
+                .open(data.URL)
                 .removeAdd()
                 .createNewPaste(data.pasteValue, data.nameValue);
     }
