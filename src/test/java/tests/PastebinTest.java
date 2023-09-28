@@ -14,7 +14,7 @@ public class PastebinTest extends TestBase {
         PastePage pastePage = new PastePage(driver);
 
         mainPage
-                .open()
+                .open(data.URL)
                 .removeAdd()
                 .createNewPaste(data.pasteValue, data.nameValue);
         pastePage
