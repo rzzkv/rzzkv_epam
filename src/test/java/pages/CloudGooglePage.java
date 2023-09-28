@@ -119,7 +119,7 @@ public class CloudGooglePage extends EmailPage {
         return cartTotal.getText().replace("Total Estimated Cost: ", "").replace(" per 1 month", "");
     }
 
-    public CloudGooglePage emailEstimate(String emailAddress){
+    public void emailEstimate(String emailAddress){
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
         driver.switchTo().frame(driver.findElement(By.id("myFrame")));
 
@@ -128,7 +128,6 @@ public class CloudGooglePage extends EmailPage {
         setEmailAddress.sendKeys(emailAddress);
         sendEmail.click();
         driver.switchTo().window(switchToAnotherTab());
-        return this;
     }
 }
 

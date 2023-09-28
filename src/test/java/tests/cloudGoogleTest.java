@@ -36,7 +36,6 @@ public class cloudGoogleTest extends TestBase {
     }
 }
 
-
 // add additional unit tests or separate to small tests
 // delete test  from emailPage
 // delete one of protected WebDriver driver; DRY

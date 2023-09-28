@@ -78,5 +78,4 @@ public class EmailPage extends BasePage {
         driver.switchTo().window(tab1Handle);
         return tab2Handle;
     }
-
 }

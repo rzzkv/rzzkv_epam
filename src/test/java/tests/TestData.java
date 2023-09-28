@@ -8,4 +8,5 @@ public class TestData {
             searchValue = "Google Cloud Platform Pricing Calculator",
             cal = "Total Estimated Cost:",
             instanceValue = "4";
+
 }
