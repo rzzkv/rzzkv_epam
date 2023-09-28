@@ -44,7 +44,7 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public MainPage createNewPaste(String pasteValue, String nameValue) {
+    public void createNewPaste(String pasteValue, String nameValue) {
         pasteArea.click();
         pasteArea.sendKeys(pasteValue);
         pasteExpiration.click();
@@ -52,6 +52,5 @@ public class MainPage extends BasePage {
         pasteName.click();
         pasteName.sendKeys(nameValue);
         createPasteBtn.click();
-        return this;
     }
 }
