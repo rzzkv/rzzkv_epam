@@ -7,9 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 
 import static java.lang.Thread.sleep;
 
-public class MainPage extends EmailPage {
+public class CloudGooglePage extends EmailPage {
 
-    private static final String URL = "https://cloud.google.com/";
     @FindBy(xpath = "//input[@class='mb2a7b']")
     private WebElement searchIcon;
     @FindBy(xpath = "//a[@class='gs-title']")
@@ -64,29 +63,29 @@ public class MainPage extends EmailPage {
     @FindBy(xpath = "//button[contains(text(), 'Send Email')]")
     private WebElement sendEmail;
 
-    public MainPage(WebDriver driver) {
+    public CloudGooglePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public MainPage open() {
+    public CloudGooglePage open(String URL){
         driver.get(URL);
         return this;
     }
 
-    public MainPage searchCalculator(String searchValue) {
+    public CloudGooglePage searchCalculator(String searchValue) {
         searchIcon.click();
         searchIcon.sendKeys(searchValue);
         searchIcon.sendKeys(Keys.ENTER);
         return this;
     }
 
-    public MainPage openCalculator() {
+    public CloudGooglePage openCalculator() {
         calculatorLink.click();
         return this;
     }
 
-    public MainPage setUpForm(int instanceValue){
+    public CloudGooglePage setUpForm(String instanceValue){
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
         driver.switchTo().frame(driver.findElement(By.id("myFrame")));
 
@@ -116,11 +115,11 @@ public class MainPage extends EmailPage {
         Assertions.assertTrue(checkEstimateExist.getText().contains(cal));
     }
 
-    public String getPriceCalculated(){
+    public String getTotalCost(){
         return cartTotal.getText().replace("Total Estimated Cost: ", "").replace(" per 1 month", "");
     }
 
-    public MainPage emailEstimate(String emailAddress){
+    public CloudGooglePage emailEstimate(String emailAddress){
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
         driver.switchTo().frame(driver.findElement(By.id("myFrame")));
 

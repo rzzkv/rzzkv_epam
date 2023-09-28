@@ -3,30 +3,33 @@ package tests;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import pages.EmailPage;
-import pages.MainPage;
+import pages.CloudGooglePage;
 
 import static java.lang.Thread.sleep;
 
 public class cloudGoogleTest extends TestBase {
 
     @Test
-    public void checkNewPaste() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver);
+    public void googleCloudCalculatorTest() throws InterruptedException {
+        CloudGooglePage cloudGooglePage = new CloudGooglePage(driver);
         EmailPage emailPage = new EmailPage(driver);
 
-        mainPage
-                .open()
+        cloudGooglePage
+                .open(data.URL_CLOUD_GOOGLE)
                 .searchCalculator(data.searchValue)
                 .openCalculator()
                 .setUpForm(data.instanceValue)
                 .checkPriceIsCalculated(data.cal);
-
-        String totalCost = mainPage.getPriceCalculated();
-        emailPage.createEmailAddress();
+        String totalCost = cloudGooglePage.getTotalCost();
+        emailPage
+                .createNewTab()
+                .open(data.URL_EMAIL)
+                .createRandomEmail()
+                .getEmailAddress();
         String emailAddress = emailPage.getEmailAddress();
 
         emailPage.switchToAnotherTab();
-        mainPage.emailEstimate(emailAddress);
+        cloudGooglePage.emailEstimate(emailAddress);
         String mailMessage = emailPage.getEmailMessage();
 
         Assertions.assertTrue(mailMessage.contains(totalCost));

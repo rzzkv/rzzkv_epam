@@ -1,11 +1,11 @@
 package tests;
 
-import pages.EmailPage;
-
 public class TestData {
 
-    String searchValue = "Google Cloud Platform Pricing Calculator";
-    int instanceValue = 4;
-    String cal = "Total Estimated Cost:";
-
+    String
+            URL_CLOUD_GOOGLE = "https://cloud.google.com/",
+            URL_EMAIL = "https://yopmail.com/en/",
+            searchValue = "Google Cloud Platform Pricing Calculator",
+            cal = "Total Estimated Cost:",
+            instanceValue = "4";
 }

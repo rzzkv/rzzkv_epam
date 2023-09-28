@@ -15,8 +15,6 @@ import java.util.Set;
 
 public class EmailPage extends BasePage {
 
-    private static final String URL = "https://yopmail.com/en/";
-
     @FindBy(xpath = "//*[@href='email-generator']")
     private WebElement randomEmail;
     @FindBy(xpath = "//div[@id='geny']")
@@ -39,7 +37,7 @@ public class EmailPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public EmailPage open() {
+    public EmailPage open(String URL) {
         driver.get(URL);
         return this;
     }
@@ -68,11 +66,9 @@ public class EmailPage extends BasePage {
         return mailField.getText();
     }
 
-    public void createEmailAddress(){
+    public EmailPage createNewTab(){
         driver.switchTo().newWindow(WindowType.TAB);
-                open();
-                createRandomEmail();
-                getEmailAddress();
+        return this;
     }
 
     public String switchToAnotherTab(){
