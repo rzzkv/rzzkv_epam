@@ -39,7 +39,6 @@ public class MainPage extends BasePage {
     }
 
     public MainPage writeInPaste(String pasteValue) {
-        pasteArea.click();
         pasteArea.sendKeys(pasteValue);
         return this;
     }
@@ -51,7 +50,6 @@ public class MainPage extends BasePage {
     }
 
     public MainPage setPasteName(String nameValue) {
-        pasteName.click();
         pasteName.sendKeys(nameValue);
         return this;
     }
