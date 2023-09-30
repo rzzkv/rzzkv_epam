@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
 public class MainPage extends BasePage {
@@ -38,15 +37,6 @@ public class MainPage extends BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].remove()", popupAd);
         return this;
     }
-
-//    public MainPage removeAdd(){
-//
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        WebElement popupAd = wait.until(ExpectedConditions.presenceOfElementLocated
-//                (By.xpath("//div[@id='vi-smartbanner']")));
-//        ((JavascriptExecutor) driver).executeScript("arguments[0].remove()", popupAd);
-//        return this;
-//    }
 
     public MainPage writeInPaste(String pasteValue) {
         pasteArea.click();
