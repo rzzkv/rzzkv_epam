@@ -12,7 +12,9 @@ public class PastebinTest extends TestBase {
         MainPage mainPage = new MainPage(driver);
         mainPage
                 .open(data.URL)
-                .removeAdd()
-                .createNewPaste(data.pasteValue, data.nameValue);
+                .writeInPaste(data.pasteValue)
+                .setPasteExpiration()
+                .setPasteName(data.nameValue)
+                .createPaste();
     }
 }

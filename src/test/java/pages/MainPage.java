@@ -18,7 +18,7 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//span[@id='select2-postform-expiration-container']")
     private WebElement pasteExpiration;
     @FindBy(xpath = "//li[text()='10 Minutes']")
-    private WebElement pasteExpirationSet;
+    private WebElement pasteExpirationSet10Minutes;
     @FindBy(xpath = "//input[@id='postform-name']")
     private WebElement pasteName;
     @FindBy(xpath = "//div[@class='form-group form-btn-container']//button[@type='submit']")
@@ -31,25 +31,42 @@ public class MainPage extends BasePage {
 
     public MainPage open(String URL){
         driver.get(URL);
-        return this;
-    }
 
-    public MainPage removeAdd(){
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement popupAd = wait.until(ExpectedConditions.presenceOfElementLocated
-                (By.xpath("//div[@id='vi-smartbanner']")));
+        WebElement popupAd = new WebDriverWait(driver, Duration.ofSeconds(10))
+                .until(ExpectedConditions.presenceOfElementLocated
+                        (By.xpath("//div[@id='vi-smartbanner']")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].remove()", popupAd);
         return this;
     }
 
-    public void createNewPaste(String pasteValue, String nameValue) {
+//    public MainPage removeAdd(){
+//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        WebElement popupAd = wait.until(ExpectedConditions.presenceOfElementLocated
+//                (By.xpath("//div[@id='vi-smartbanner']")));
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].remove()", popupAd);
+//        return this;
+//    }
+
+    public MainPage writeInPaste(String pasteValue) {
         pasteArea.click();
         pasteArea.sendKeys(pasteValue);
+        return this;
+    }
+
+    public MainPage setPasteExpiration() {
         pasteExpiration.click();
-        pasteExpirationSet.click();
+        pasteExpirationSet10Minutes.click();
+        return this;
+    }
+
+    public MainPage setPasteName(String nameValue) {
         pasteName.click();
         pasteName.sendKeys(nameValue);
+        return this;
+    }
+
+    public void createPaste() {
         createPasteBtn.click();
     }
 }
