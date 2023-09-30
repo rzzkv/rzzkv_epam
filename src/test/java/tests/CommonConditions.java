@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-abstract public class TestBase{
+abstract public class CommonConditions {
     protected WebDriver driver;
     TestData data = new TestData();
 

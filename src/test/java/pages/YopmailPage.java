@@ -1,19 +1,15 @@
 package pages;
 
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.Set;
 
-public class EmailPage extends BasePage {
+public class YopmailPage extends BasePage {
 
     @FindBy(xpath = "//*[@href='email-generator']")
     private WebElement randomEmail;
@@ -32,18 +28,19 @@ public class EmailPage extends BasePage {
     @FindBy(xpath = "//*[@id='google_esf']")
     WebElement adFrame;
 
-    public EmailPage(WebDriver driver) {
+    public YopmailPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public EmailPage open(String URL) {
+    public YopmailPage open(String URL) {
         driver.get(URL);
         return this;
     }
 
-    public EmailPage createRandomEmail() {
+    public YopmailPage createRandomEmail() {
         randomEmail.click();
+//  need this "if" because of full page ad
         if(adFrame.isEnabled()) {
             driver.get("https://yopmail.com/en/email-generator");
         }
@@ -59,6 +56,7 @@ public class EmailPage extends BasePage {
         checkInbox.click();
         refreshButton.click();
         driver.switchTo().frame(driver.findElement(By.id("ifmail")));
+//  need this "if" in case email wasn't received yet
         if(!mailField.isDisplayed()){
             mailField.wait(5000);
             refreshButton.click();
@@ -66,12 +64,17 @@ public class EmailPage extends BasePage {
         return mailField.getText();
     }
 
-    public EmailPage createNewTab(){
+    public YopmailPage createNewTab(){
+/*
+I know that actions with tab shouldn't be in Pages
+So I tried to do it in separate util Tab class, but didn't work "NullPointerException" because "this.driver" is null ,
+thing to discuss on call
+*/
         driver.switchTo().newWindow(WindowType.TAB);
         return this;
     }
 
-    public String switchToAnotherTab(){
+    public String switchToFirstTab(){
         Set<String> windowHandles = driver.getWindowHandles();
         String tab1Handle = windowHandles.iterator().next();
         String tab2Handle = windowHandles.stream().filter(handle -> !handle.equals(tab1Handle)).findFirst().get();
