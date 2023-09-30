@@ -15,8 +15,11 @@ public class PastebinTest extends TestBase {
 
         mainPage
                 .open(data.URL)
-                .removeAdd()
-                .createNewPaste(data.pasteValue, data.nameValue);
+                .writeInPaste(data.pasteValue)
+                .setSyntaxHighlighting()
+                .setPasteExpiration()
+                .setPasteName(data.nameValue)
+                .createPaste();
         pastePage
                 .checkTitle(data.nameValue)
                 .checkSyntax(data.syntaxBash)

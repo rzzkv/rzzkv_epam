@@ -21,18 +21,18 @@ public class PastePage extends BasePage{
     }
 
     public PastePage checkTitle(String titleValue){
-        Assertions.assertTrue(title.getText().contains(titleValue));
-        //Assertions.assertTrue(title.toString().contains(titleValue));
+        Assertions.assertEquals(title.getText(), titleValue);
         return this;
     }
 
     public PastePage checkSyntax(String syntaxValue){
-        Assertions.assertTrue(syntax.getText().contains(syntaxValue));
+        Assertions.assertEquals(syntax.getText(), syntaxValue);
         return this;
     }
 
-    public PastePage checkCode(String codeValue){
+    public void checkCode(String codeValue){
         Assertions.assertTrue(code.getText().contains(codeValue));
-        return this;
+//  assertEquals didn't work out, however text is the same, checked in comparison
+//        Assertions.assertEquals(code.getText(), codeValue);
     }
 }
