@@ -65,11 +65,6 @@ public class YopmailPage extends BasePage {
     }
 
     public YopmailPage createNewTab(){
-/*
-I know that actions with tab shouldn't be in Pages
-So I tried to do it in separate util Tab class, but didn't work "NullPointerException" because "this.driver" is null ,
-thing to discuss on call
-*/
         driver.switchTo().newWindow(WindowType.TAB);
         return this;
     }

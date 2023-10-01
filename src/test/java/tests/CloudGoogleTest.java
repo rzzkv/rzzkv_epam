@@ -2,6 +2,9 @@ package tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CalculatorPage;
@@ -28,7 +31,7 @@ public class CloudGoogleTest extends CommonConditions {
                 .selectGPUType()
                 .selectGPUNumber()
                 .setSSDValue()
-//                .setLocation()
+                .setLocation()
                 .setUsageValue()
                 .addToEstimateBtn()
                 .checkPriceIsCalculated(data.totalEstimateCostTxt);
@@ -48,9 +51,18 @@ public class CloudGoogleTest extends CommonConditions {
 
         Assertions.assertTrue(mailMessage.contains(totalCost));
     }
+
+    @Test
+    public void test(){
+                driver.get("https://cloud.google.com/products/calculator");
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
+        driver.switchTo().frame(driver.findElement(By.id("myFrame")));
+
+        driver.findElement(By.xpath("//*[@id='select_value_label_96']")).click();
+        driver.findElement(By.xpath("(//div[normalize-space(text())='Frankfurt (europe-west3)'])[last()]")).click();
+
+    }
 }
 
-// Things to improve:
-// add additional unit tests or separate to small tests
-// delete test  from emailPage
-// our main service test depends on email service,
+
+
