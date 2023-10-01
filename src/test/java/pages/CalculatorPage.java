@@ -5,17 +5,16 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pages.components.EstimateModal;
+import tests.TestData;
 
 import static java.lang.Thread.sleep;
 
 public class CalculatorPage extends YopmailPage {
-
-    EstimateModal estimateModal = new EstimateModal();
     @FindBy(xpath = "//input[@id='input_98']")
     private WebElement numberOfInstances;
     @FindBy(xpath = "//*[@id='select_value_label_93']")
     private WebElement series;
-    @FindBy(xpath = "//*[@id='select_option_220']")
+    @FindBy(xpath = "//div[normalize-space(text())='N1']")
     private WebElement seriesValue;
     @FindBy(xpath = "//*[@id='select_value_label_94']")
     private WebElement machineType;
@@ -33,12 +32,11 @@ public class CalculatorPage extends YopmailPage {
     private WebElement gpuNumberSelect;
     @FindBy(xpath = "//*[@id='select_value_label_463']")
     private WebElement ssd;
-    @FindBy(xpath = "//*[@id='select_option_490']")
+    @FindBy(xpath = "//md-option[.//div[normalize-space(text())='2x375 GB']]")
     private WebElement ssdValue;
     @FindBy(xpath = "//*[@id='select_value_label_96']")
     private WebElement location;
-    @FindBy(xpath = "//md-option[.//div[normalize-space(text())='Frankfurt (europe-west3)']][3]")
-//    @FindBy(xpath = "//md-option[.//div[normalize-space(text())='Frankfurt (europe-west3)']]")
+    @FindBy(xpath = "(//div[normalize-space(text())='Frankfurt (europe-west3)'])[last()]")
     private WebElement locationValue;
     @FindBy(xpath = "//*[@id='select_value_label_97']")
     private WebElement usage;
@@ -69,8 +67,7 @@ public class CalculatorPage extends YopmailPage {
     }
 
     public CalculatorPage setNumberOfInstances(String instanceValue){
-        numberOfInstances.click();
-        numberOfInstances.sendKeys(String.valueOf(instanceValue));
+        numberOfInstances.sendKeys(instanceValue);
         return this;
     }
 
@@ -127,10 +124,7 @@ public class CalculatorPage extends YopmailPage {
     }
 
     public void checkPriceIsCalculated(String totalEstimateCostTxt){
-//  I know that in Page should not be any test, but did not figure out how to do it better
         Assertions.assertTrue(checkEstimateExist.getText().contains(totalEstimateCostTxt));
-//  Tried to add separate class EstimateModal as component, but didn't work "NullPointerException", thing to discuss on call
-//        estimateModal.checkPriceIsCalculated(cal);
     }
 
     public String getTotalCost() {
