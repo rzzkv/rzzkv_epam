@@ -138,9 +138,5 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
         sendEmail.click();
         return  this;
     }
-
-    public void switchToSecondTab(){
-        driver.switchTo().window(switchToFirstTab());
-    }
 }
 
