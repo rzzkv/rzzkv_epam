@@ -4,12 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.components.EstimateModal;
-import tests.TestData;
 
 import static java.lang.Thread.sleep;
 
-public class CalculatorPage extends YopmailPage {
+public class CloudGoogleCalculatorPage extends YopmailPage {
     @FindBy(xpath = "//input[@id='input_98']")
     private WebElement numberOfInstances;
     @FindBy(xpath = "//*[@id='select_value_label_93']")
@@ -55,70 +53,70 @@ public class CalculatorPage extends YopmailPage {
     @FindBy(xpath = "//button[contains(text(), 'Send Email')]")
     private WebElement sendEmail;
 
-    public CalculatorPage(WebDriver driver) {
+    public CloudGoogleCalculatorPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    public CalculatorPage calculatorPageFrame(){
+    public CloudGoogleCalculatorPage calculatorPageFrame(){
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
         driver.switchTo().frame(driver.findElement(By.id("myFrame")));
         return this;
     }
 
-    public CalculatorPage setNumberOfInstances(String instanceValue){
+    public CloudGoogleCalculatorPage setNumberOfInstances(String instanceValue){
         numberOfInstances.sendKeys(instanceValue);
         return this;
     }
 
-    public CalculatorPage setSeries(){
+    public CloudGoogleCalculatorPage setSeries(){
         series.click();
         seriesValue.click();
         return this;
     }
 
-    public CalculatorPage setMachineType(){
+    public CloudGoogleCalculatorPage setMachineType(){
         machineType.click();
         machineTypeValue.click();
         return this;
     }
 
-    public CalculatorPage addGPU(){
+    public CloudGoogleCalculatorPage addGPU(){
         gpu.click();
         return this;
     }
 
-    public CalculatorPage selectGPUType(){
+    public CloudGoogleCalculatorPage selectGPUType(){
         gpuType.click();
         gpuTypeSelect.click();
         return this;
     }
 
-    public CalculatorPage selectGPUNumber(){
+    public CloudGoogleCalculatorPage selectGPUNumber(){
         gpuNumber.click();
         gpuNumberSelect.click();
         return this;
     }
 
-    public CalculatorPage setSSDValue(){
+    public CloudGoogleCalculatorPage setSSDValue(){
         ssd.click();
         ssdValue.click();
         return this;
     }
 
-    public CalculatorPage setLocation(){
+    public CloudGoogleCalculatorPage setLocation(){
         location.click();
         locationValue.click();
         return this;
     }
 
-    public CalculatorPage setUsageValue(){
+    public CloudGoogleCalculatorPage setUsageValue(){
         usage.click();
         usageValue.click();
         return this;
     }
 
-    public CalculatorPage addToEstimateBtn(){
+    public CloudGoogleCalculatorPage addToEstimateBtn(){
         addToEstimate.click();
         return this;
     }
@@ -133,7 +131,7 @@ public class CalculatorPage extends YopmailPage {
                 .replace(" per 1 month", "");
     }
 
-    public CalculatorPage emailEstimate(String emailAddress){
+    public CloudGoogleCalculatorPage emailEstimate(String emailAddress){
         emailEstimate.click();
         setEmailAddress.click();
         setEmailAddress.sendKeys(emailAddress);

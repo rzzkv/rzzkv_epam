@@ -2,27 +2,24 @@ package tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
-import pages.CalculatorPage;
+import pages.CloudGoogleCalculatorPage;
 
 public class CloudGoogleTest extends CommonConditions {
 
     @Test
     public void googleCloudCalculatorTest() throws InterruptedException {
-        CloudGooglePage cloudGooglePage = new CloudGooglePage(driver);
-        CalculatorPage calculatorPage = new CalculatorPage(driver);
-        YopmailPage yopmailPage = new YopmailPage(driver);
+        CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
+        CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
+        YopmailPage yopmail = new YopmailPage(driver);
 
-        cloudGooglePage
+        cloudGoogle
                 .open(data.URL_CLOUD_GOOGLE)
                 .searchCalculator(data.searchValue)
                 .openCalculator();
 
-        calculatorPage
+        cloudGoogleCalculator
                 .calculatorPageFrame()
                 .setNumberOfInstances(data.instanceValue)
                 .setSeries()
@@ -35,32 +32,21 @@ public class CloudGoogleTest extends CommonConditions {
                 .setUsageValue()
                 .addToEstimateBtn()
                 .checkPriceIsCalculated(data.totalEstimateCostTxt);
-        String totalCost = calculatorPage.getTotalCost();
+        String totalCost = cloudGoogleCalculator.getTotalCost();
 
-        yopmailPage
+        yopmail
                 .createNewTab()
                 .open(data.URL_EMAIL)
                 .createRandomEmail();
-        String emailAddress = yopmailPage.getEmailAddress();
-        yopmailPage.switchToFirstTab();
-        calculatorPage
+        String emailAddress = yopmail.getEmailAddress();
+        yopmail.switchToFirstTab();
+        cloudGoogleCalculator
                 .calculatorPageFrame()
                 .emailEstimate(emailAddress)
                 .switchToSecondTab();
-        String mailMessage = yopmailPage.getEmailMessage();
+        String mailMessage = yopmail.getEmailMessage();
 
         Assertions.assertTrue(mailMessage.contains(totalCost));
-    }
-
-    @Test
-    public void test(){
-                driver.get("https://cloud.google.com/products/calculator");
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
-        driver.switchTo().frame(driver.findElement(By.id("myFrame")));
-
-        driver.findElement(By.xpath("//*[@id='select_value_label_96']")).click();
-        driver.findElement(By.xpath("(//div[normalize-space(text())='Frankfurt (europe-west3)'])[last()]")).click();
-
     }
 }
 
