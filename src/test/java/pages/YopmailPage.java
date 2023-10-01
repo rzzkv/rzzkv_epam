@@ -63,17 +63,4 @@ public class YopmailPage extends BasePage {
         }
         return mailField.getText();
     }
-
-    public YopmailPage createNewTab(){
-        driver.switchTo().newWindow(WindowType.TAB);
-        return this;
-    }
-
-    public String switchToFirstTab(){
-        Set<String> windowHandles = driver.getWindowHandles();
-        String tab1Handle = windowHandles.iterator().next();
-        String tab2Handle = windowHandles.stream().filter(handle -> !handle.equals(tab1Handle)).findFirst().get();
-        driver.switchTo().window(tab1Handle);
-        return tab2Handle;
-    }
 }

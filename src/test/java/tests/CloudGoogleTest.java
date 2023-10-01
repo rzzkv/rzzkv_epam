@@ -1,10 +1,14 @@
 package tests;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CloudGoogleCalculatorPage;
+import utils.Tab;
+
+import java.io.IOException;
 
 public class CloudGoogleTest extends CommonConditions {
 
@@ -28,22 +32,24 @@ public class CloudGoogleTest extends CommonConditions {
                 .selectGPUType()
                 .selectGPUNumber()
                 .setSSDValue()
-                .setLocation()
+//                .setLocation()
                 .setUsageValue()
                 .addToEstimateBtn()
                 .checkPriceIsCalculated(data.totalEstimateCostTxt);
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
+        tab.createNewTab(driver);
         yopmail
-                .createNewTab()
                 .open(data.URL_EMAIL)
                 .createRandomEmail();
         String emailAddress = yopmail.getEmailAddress();
-        yopmail.switchToFirstTab();
+
+        tab.switchToMainTab(driver);
         cloudGoogleCalculator
                 .calculatorPageFrame()
-                .emailEstimate(emailAddress)
-                .switchToSecondTab();
+                .emailEstimate(emailAddress);
+
+        tab.switchToSecondTab(driver);
         String mailMessage = yopmail.getEmailMessage();
 
         Assertions.assertTrue(mailMessage.contains(totalCost));
