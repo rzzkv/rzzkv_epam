@@ -6,12 +6,14 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import static org.openqa.selenium.devtools.v114.page.Page.captureScreenshot;
 
-public class Utility {
+public class Utility{
     WebDriver driver;
     public Utility(WebDriver driver){
         this.driver = driver;
@@ -24,3 +26,5 @@ public class Utility {
         FileUtils.copyFile(screenshotFile, new File(fileWithPath));
     }
 }
+
+

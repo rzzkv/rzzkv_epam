@@ -33,4 +33,8 @@ public class CloudGooglePage extends YopmailPage {
     public void openCalculator() {
         calculatorLink.click();
     }
+
+    public String getCalculatorLinkText() {
+        return calculatorLink.getText();
+    }
 }

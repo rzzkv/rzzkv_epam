@@ -6,7 +6,8 @@ public class TestData {
             URL_CLOUD_GOOGLE = "https://cloud.google.com/",
             URL_EMAIL = "https://yopmail.com/en/",
             searchValue = "Google Cloud Platform Pricing Calculator",
-            totalEstimateCostTxt = "Total Estimated Cost:",
+            totalEstimateCostText = "Total Estimated Cost:",
+            CalculatorLinkText = "Google Cloud Pricing Calculator",
             instanceValue = "4";
 
 }

@@ -1,9 +1,9 @@
 package pages;
 
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import static java.lang.Thread.sleep;
 
@@ -122,7 +122,7 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
     }
 
     public void checkPriceIsCalculated(String totalEstimateCostTxt){
-        Assertions.assertTrue(checkEstimateExist.getText().contains(totalEstimateCostTxt));
+        Assert.assertTrue(checkEstimateExist.getText().contains(totalEstimateCostTxt));
     }
 
     public String getTotalCost() {

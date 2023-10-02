@@ -1,18 +1,27 @@
 package tests;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CloudGoogleCalculatorPage;
-import utils.Tab;
 
-import java.io.IOException;
 
 public class CloudGoogleTest extends CommonConditions {
 
-    @Test
+    @Test(groups = { "blocker", "google" })
+    public void calculatorSearchTest(){
+        CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
+
+        cloudGoogle
+                .open(data.URL_CLOUD_GOOGLE)
+                .searchCalculator(data.searchValue);
+        String mailMessage = cloudGoogle.getCalculatorLinkText();
+
+        Assert.assertEquals(mailMessage, data.CalculatorLinkText);
+    }
+
+    @Test(groups = { "blocker", "main" })
     public void googleCloudCalculatorTest() throws InterruptedException {
         CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
         CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
@@ -35,7 +44,7 @@ public class CloudGoogleTest extends CommonConditions {
 //                .setLocation()
                 .setUsageValue()
                 .addToEstimateBtn()
-                .checkPriceIsCalculated(data.totalEstimateCostTxt);
+                .checkPriceIsCalculated(data.totalEstimateCostText);
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
         tab.createNewTab(driver);
@@ -52,7 +61,7 @@ public class CloudGoogleTest extends CommonConditions {
         tab.switchToSecondTab(driver);
         String mailMessage = yopmail.getEmailMessage();
 
-        Assertions.assertTrue(mailMessage.contains(totalCost));
+        Assert.assertTrue(mailMessage.contains(totalCost));
     }
 }
 

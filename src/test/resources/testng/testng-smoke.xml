@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Smoke Test Suite">
+    <test name="Pseudo Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="tests.pseudoTests"/>
+        </packages>
+    </test>
+    <test name="Positive Tests">
+        <groups>
+            <run>
+                <include name="positive"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.pseudoTests.PositiveTests"/>
+        </classes>
+    </test>
+</suite>

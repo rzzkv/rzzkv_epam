@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="All Test Suite">
+    <test name="All Tests">
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="blocker"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="tests.pseudoTests.SkippedTests"/>
+            <class name="tests.pseudoTests.PositiveTests"/>
+            <class name="tests.pseudoTests.NegativeTests"/>
+            <class name="tests.CloudGoogleTest"/>
+            <class name="tests.YopmailTest"/>
+        </classes>
+    </test>
+</suite>

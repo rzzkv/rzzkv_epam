@@ -1,24 +1,24 @@
 package tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import utils.Tab;
 import utils.Utility;
 
 import java.io.IOException;
 import java.time.Duration;
 
-abstract public class CommonConditions {
-    protected WebDriver driver;
+abstract public class CommonConditions{
+    protected  static WebDriver driver;
     TestData data = new TestData();
-    Utility utility = new Utility(driver);
     Tab tab = new Tab();
+    Utility utility=new Utility(driver);
 
-    @BeforeEach
+    @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
@@ -27,10 +27,17 @@ abstract public class CommonConditions {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
-    @AfterEach
-    public void tearDown() {
+    @AfterMethod
+    public void screenShot(ITestResult result) throws IOException {
+        if(ITestResult.FAILURE==result.getStatus()){
+            try{
+                utility.takeScreenShot(driver);
+            }
+            catch (Exception exception){
+                System.out.println(exception.toString());
+            }
+        }
         driver.close();
         driver.quit();
     }
-
 }
