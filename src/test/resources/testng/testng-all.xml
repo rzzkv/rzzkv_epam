@@ -5,8 +5,9 @@
     <test name="All Tests">
         <groups>
             <run>
-                <include name="smoke"/>
-                <include name="blocker"/>
+                <include name="mail"/>
+<!--                <include name="smoke"/>-->
+<!--                <include name="blocker"/>-->
             </run>
         </groups>
         <classes>

@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import utils.Tab;
 import utils.Utility;
 
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 abstract public class CommonConditions{
-    protected  static WebDriver driver;
+    protected static WebDriver driver;
     TestData data = new TestData();
     Tab tab = new Tab();
     Utility utility=new Utility(driver);
