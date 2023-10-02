@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.time.Duration;
 
 abstract public class CommonConditions{
-    protected static WebDriver driver;
+    protected static WebDriver driver = new ChromeDriver();
     TestData data = new TestData();
     Tab tab = new Tab();
     Utility utility=new Utility(driver);
