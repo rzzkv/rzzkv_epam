@@ -9,7 +9,7 @@ public class EstimateModal {
     @FindBy(xpath = "//md-card-content[@id='resultBlock']")
     private WebElement checkEstimateExist;
 
-    public void checkPriceIsCalculated(String cal){
-        Assertions.assertTrue(checkEstimateExist.getText().contains(cal));
+    public void checkPriceIsCalculated(String totalEstimateCostText){
+        Assertions.assertTrue(checkEstimateExist.getText().contains(totalEstimateCostText));
     }
 }
