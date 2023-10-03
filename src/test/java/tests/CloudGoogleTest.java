@@ -2,6 +2,7 @@ package tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CloudGoogleCalculatorPage;
@@ -51,7 +52,6 @@ public class CloudGoogleTest extends CommonConditions {
         Assertions.assertTrue(mailMessage.contains(totalCost));
     }
 }
-
 
 
 

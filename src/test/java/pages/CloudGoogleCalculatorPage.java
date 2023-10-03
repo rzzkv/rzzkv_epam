@@ -12,7 +12,7 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
     private WebElement numberOfInstances;
     @FindBy(xpath = "//*[@id='select_value_label_93']")
     private WebElement series;
-    @FindBy(xpath = "//div[normalize-space(text())='N1']")
+    @FindBy(css = ".md-select-menu-container.md-active.md-clickable md-option[value^=\"n1\"]")
     private WebElement seriesValue;
     @FindBy(xpath = "//*[@id='select_value_label_94']")
     private WebElement machineType;
@@ -30,11 +30,11 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
     private WebElement gpuNumberSelect;
     @FindBy(xpath = "//*[@id='select_value_label_463']")
     private WebElement ssd;
-    @FindBy(xpath = "//md-option[.//div[normalize-space(text())='2x375 GB']]")
+    @FindBy(css = "md-option[ng-repeat=\"item in listingCtrl.dynamicSsd.computeServer\"][value=\"2\"]")
     private WebElement ssdValue;
     @FindBy(xpath = "//*[@id='select_value_label_96']")
     private WebElement location;
-    @FindBy(xpath = "(//div[normalize-space(text())='Frankfurt (europe-west3)'])[last()]")
+    @FindBy(css = "div[role^=\"presentation\"] ._md.md-overflow ._md>md-optgroup>md-option[value^=\"europe-west3\"]")
     private WebElement locationValue;
     @FindBy(xpath = "//*[@id='select_value_label_97']")
     private WebElement usage;

@@ -24,10 +24,10 @@ It worked when I tried it in a separate test, but didn't work in the 'Calculator
 Said that data.seriesValue has to be constant, however it was final  
 - `driver.findElement(By.xpath("//*[@id='select_value_label_93']")).click();`  
 - `driver.findElement(By.xpath("//md-option[.//div[normalize-space(text())='" + data.seriesValue + "']]")).click();`  
-- *data.seriesValue String which we send from TestData class, and could change depending on test case
-4. seriesValue, ssdValue, locationValue three super unstable element, tried 3 to 5 different locators,  
- but wasn`t able to fix their stability.  
-- Other element would receive the click: `<md-backdrop class="md-select-backdrop md-click-catcher ng-scope"></md-backdrop>`
+- *data.seriesValue String which we send from TestData class, and could change depending on test case  
+~~4. seriesValue, ssdValue, locationValue three super unstable element, tried 3 to 5 different locators,  
+ but wasn`t able to fix their stability.~~
+~~- Other element would receive the click: `<md-backdrop class="md-select-backdrop md-click-catcher ng-scope"></md-backdrop>`~~
 5. I encountered significant difficulties with a full-page ad that was dynamic and seemingly impossible to locate.  
 Initially, I attempted to address the issue by using an adBlock extension, but it did not yield the desired results.  
 So, I implemented the following code. However, I am uncertain whether this approach is the correct way to tackle the problem.  
