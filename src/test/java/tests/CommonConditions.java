@@ -1,15 +1,12 @@
 package tests;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import utils.Tab;
 import utils.Utility;
-
 import java.io.IOException;
 import java.time.Duration;
 
@@ -21,7 +18,6 @@ abstract public class CommonConditions{
 
     @BeforeMethod
     public void setUp() {
-        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));

@@ -41,7 +41,7 @@ public class CloudGoogleTest extends CommonConditions {
                 .selectGPUType()
                 .selectGPUNumber()
                 .setSSDValue()
-//                .setLocation()
+                .setLocation()
                 .setUsageValue()
                 .addToEstimateBtn()
                 .checkPriceIsCalculated(data.totalEstimateCostText);

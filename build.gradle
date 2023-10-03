@@ -15,7 +15,7 @@ dependencies {
             'org.seleniumhq.selenium:selenium-java:4.12.1',
             'org.testng:testng:7.8.0',
             "org.slf4j:slf4j-simple:2.0.0",
-            'io.github.bonigarcia:webdrivermanager:5.5.3'
+            'commons-io:commons-io:2.13.0'
     )
 }
 
