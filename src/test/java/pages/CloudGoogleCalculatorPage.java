@@ -3,40 +3,34 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import utils.Utility;
 
-public class CloudGoogleCalculatorPage extends YopmailPage {
-    @FindBy(xpath = "//input[@id='input_98']")
+public class CloudGoogleCalculatorPage extends YopmailPage{
+    @FindBy(id = "input_98")
     private WebElement numberOfInstances;
-    @FindBy(xpath = "//*[@id='select_value_label_93']")
+    @FindBy(id = "select_123")
     private WebElement series;
-    @FindBy(css = ".md-select-menu-container.md-active.md-clickable md-option[value^=\"n1\"]")
-    private WebElement seriesValue;
-    @FindBy(xpath = "//*[@id='select_value_label_94']")
+    private final static String SERIES_TYPE_SET = "//md-option[@value='%s']";
+    @FindBy(id = "select_125")
     private WebElement machineType;
-    @FindBy(xpath = "//*[@id='select_option_469']")
-    private WebElement machineTypeValue;
+    private final static String MACHINE_TYPE_SET = "//md-option[@value='%s']";
     @FindBy(xpath = "//div[@class='md-label'][contains(text(), 'Add GPUs.')]")
     private WebElement gpu;
-    @FindBy(xpath = "//md-select[.//span[text()='GPU type']]")
+    @FindBy(id = "select_510")
     private WebElement gpuType;
-    @FindBy(xpath = "//md-option[.//div[normalize-space(text())='NVIDIA Tesla V100']]")
-    private WebElement gpuTypeSelect;
-    @FindBy(xpath = "//md-select-value[.//div[normalize-space(text())='0']]")
+    private final static String GPU_TYPE_SET = "//md-option[@value='%s']";
+    @FindBy(id = "select_512")
     private WebElement gpuNumber;
-    @FindBy(xpath = "//md-option[.//div[normalize-space(text())='1']]")
-    private WebElement gpuNumberSelect;
-    @FindBy(xpath = "//*[@id='select_value_label_463']")
+    private final static String GPU_NUMBER_SET = "//md-option[@value='%s']";
+    @FindBy(id = "select_464")
     private WebElement ssd;
-    @FindBy(css = "md-option[ng-repeat=\"item in listingCtrl.dynamicSsd.computeServer\"][value=\"2\"]")
-    private WebElement ssdValue;
-    @FindBy(xpath = "//*[@id='select_value_label_96']")
+    private final static String SSD_VALUE_SET = "//md-option[@value='%s']";
+    @FindBy(id = "select_131")
     private WebElement location;
-    @FindBy(css = "div[role^=\"presentation\"] ._md.md-overflow ._md>md-optgroup>md-option[value^=\"europe-west3\"]")
-    private WebElement locationValue;
-    @FindBy(xpath = "//*[@id='select_value_label_97']")
+    private final static String LOCATION_VALUE_SET = "//md-option[@value='%s']";
+    @FindBy(id = "select_138")
     private WebElement usage;
-    @FindBy(xpath = "//*[@id='select_option_136']")
-    private WebElement usageValue;
+    private final static String USAGE_VALUE_SET = "//md-option[@value='%s']";
     @FindBy(xpath = "//md-card-content[@id='resultBlock']")
     private WebElement checkEstimateExist;
     @FindBy(xpath = "//div[contains(@class, 'layout-align-end-start')]/button[contains(@class, 'cpc-button')]")
@@ -55,9 +49,9 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
         PageFactory.initElements(driver, this);
     }
 
-    public CloudGoogleCalculatorPage calculatorPageFrame(){
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[contains(@src,'frame/products/calculator/index')]")));
-        driver.switchTo().frame(driver.findElement(By.id("myFrame")));
+    public CloudGoogleCalculatorPage calculatorPageFrame(WebDriver driver,String xpath, String id){
+        Utility.iFrameXpath(driver, xpath);
+        Utility.iFrameId(driver, id);
         return this;
     }
 
@@ -66,50 +60,57 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
         return this;
     }
 
-    public CloudGoogleCalculatorPage setSeries(){
+    public CloudGoogleCalculatorPage setSeries(String value){
         series.click();
-        seriesValue.click();
+        driver.findElement(
+                By.xpath(String.format(SERIES_TYPE_SET, value))).click();
         return this;
     }
 
-    public CloudGoogleCalculatorPage setMachineType(){
+    public CloudGoogleCalculatorPage setMachineType(String value){
         machineType.click();
-        machineTypeValue.click();
+        driver.findElement(
+                By.xpath(String.format(MACHINE_TYPE_SET, value))).click();
         return this;
     }
 
     public CloudGoogleCalculatorPage addGPU(){
         gpu.click();
-        return this;
+        return new CloudGoogleCalculatorPage(driver);
     }
 
-    public CloudGoogleCalculatorPage selectGPUType(){
+    public CloudGoogleCalculatorPage selectGPUType(String value){
         gpuType.click();
-        gpuTypeSelect.click();
+        driver.findElement(
+                By.xpath(String.format(GPU_TYPE_SET, value))).click();
         return this;
     }
 
-    public CloudGoogleCalculatorPage selectGPUNumber(){
+    public CloudGoogleCalculatorPage selectGPUNumber(String value){
         gpuNumber.click();
-        gpuNumberSelect.click();
+        driver.findElement(
+                By.xpath(String.format(GPU_NUMBER_SET, value))).click();
         return this;
     }
 
-    public CloudGoogleCalculatorPage setSSDValue(){
+    public CloudGoogleCalculatorPage setSSDValue(String value){
         ssd.click();
-        ssdValue.click();
+        driver.findElement(
+                By.xpath(String.format(SSD_VALUE_SET, value))).click();
         return this;
     }
 
-    public CloudGoogleCalculatorPage setLocation(){
+    public CloudGoogleCalculatorPage setLocation(String value){
         location.click();
-        locationValue.click();
+        driver.findElement(
+                By.xpath(String.format(LOCATION_VALUE_SET, value))).click();
         return this;
     }
 
-    public CloudGoogleCalculatorPage setUsageValue(){
+    public CloudGoogleCalculatorPage setUsageValue(String value){
         usage.click();
-        usageValue.click();
+        driver.findElement(
+                By.xpath(String.format(USAGE_VALUE_SET, value))).click();
         return this;
     }
 
@@ -127,10 +128,17 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
                 .replace(" per 1 month", "");
     }
 
-    public void emailEstimate(String emailAddress){
+    public CloudGoogleCalculatorPage emailEstimateBtn(){
         emailEstimate.click();
-        setEmailAddress.click();
+       return this;
+    }
+
+    public CloudGoogleCalculatorPage setEmailAddress(String emailAddress){
         setEmailAddress.sendKeys(emailAddress);
+        return this;
+    }
+
+    public void sendEmailBtn(){
         sendEmail.click();
     }
 }

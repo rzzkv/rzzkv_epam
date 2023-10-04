@@ -9,8 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 public class CloudGooglePage extends YopmailPage {
 
     @FindBy(xpath = "//input[@class='mb2a7b']")
-    private WebElement searchIcon;
-    @FindBy(xpath = "//a[@class='gs-title']")
+    private WebElement searchElement;
+    @FindBy(xpath = "//a[@class='gs-title']/b[text()='Google Cloud Pricing Calculator']")
     private WebElement calculatorLink;
 
     public CloudGooglePage(WebDriver driver) {
@@ -23,10 +23,11 @@ public class CloudGooglePage extends YopmailPage {
         return this;
     }
 
-    public CloudGooglePage searchCalculator(String searchValue) {
-        searchIcon.click();
-        searchIcon.sendKeys(searchValue);
-        searchIcon.sendKeys(Keys.ENTER);
+//    Решил в итоге не разделять этот метод, т.к эти 3 действия всегда будут вместе, просто поменял названия
+    public CloudGooglePage searchGivenValue(String searchValue) {
+        searchElement.click();
+        searchElement.sendKeys(searchValue);
+        searchElement.sendKeys(Keys.ENTER);
         return this;
     }
 

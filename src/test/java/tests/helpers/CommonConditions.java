@@ -1,5 +1,6 @@
-package tests;
+package tests.helpers;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +10,8 @@ import java.time.Duration;
 
 abstract public class CommonConditions {
     protected WebDriver driver;
-    TestData data = new TestData();
-    Tab tab = new Tab();
+    protected SoftAssertions softly = new SoftAssertions();
+    protected Tab tab = new Tab();
 
     @BeforeEach
     public void setUp() {
