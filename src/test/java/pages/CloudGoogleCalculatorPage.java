@@ -4,7 +4,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public class CloudGoogleCalculatorPage extends YopmailPage {
     @FindBy(xpath = "//input[@id='input_98']")
     private WebElement numberOfInstances;
@@ -114,9 +113,8 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
         return this;
     }
 
-    public CloudGoogleCalculatorPage addToEstimateBtn(){
+    public void addToEstimateBtn(){
         addToEstimate.click();
-        return this;
     }
 
     public String getEstimateTitle(){
