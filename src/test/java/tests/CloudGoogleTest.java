@@ -43,8 +43,10 @@ public class CloudGoogleTest extends CommonConditions {
                 .setSSDValue()
                 .setLocation()
                 .setUsageValue()
-                .addToEstimateBtn()
-                .checkPriceIsCalculated(data.totalEstimateCostText);
+                .addToEstimateBtn();
+
+        String estimateTitle = cloudGoogleCalculator.getEstimateTitle();
+        Assert.assertTrue(estimateTitle.contains(data.totalEstimateCostText));
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
         tab.createNewTab(driver);

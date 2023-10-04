@@ -121,8 +121,8 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
         return this;
     }
 
-    public void checkPriceIsCalculated(String totalEstimateCostTxt){
-        Assert.assertTrue(checkEstimateExist.getText().contains(totalEstimateCostTxt));
+    public String getEstimateTitle(){
+       return checkEstimateExist.getText();
     }
 
     public String getTotalCost() {
