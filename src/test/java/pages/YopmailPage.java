@@ -3,11 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import java.util.Set;
 
 public class YopmailPage extends BasePage {
 
@@ -17,10 +14,6 @@ public class YopmailPage extends BasePage {
     private WebElement emailAddress;
     @FindBy(xpath = "//*[text()='Check Inbox']")
     private WebElement checkInbox;
-    @FindBy(xpath = "//input[@class='mb2a7b']")
-    private WebElement searchIcon;
-    @FindBy(xpath = "//input[@class='mb2a7b']")
-    private WebElement searchIcon1;
     @FindBy(xpath = "//button[@id='refresh']")
     private WebElement refreshButton;
     @FindBy(xpath = "//div[@id='mail']")
@@ -38,13 +31,12 @@ public class YopmailPage extends BasePage {
         return this;
     }
 
-    public YopmailPage createRandomEmail() {
+    public void createRandomEmail() {
         randomEmail.click();
 //  need this "if" because of full page ad
         if(adFrame.isEnabled()) {
             driver.get("https://yopmail.com/en/email-generator");
         }
-        return this;
     }
 
     public String getEmailAddress() {

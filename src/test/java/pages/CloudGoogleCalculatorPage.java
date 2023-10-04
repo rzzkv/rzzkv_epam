@@ -3,9 +3,6 @@ package pages;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-
-import static java.lang.Thread.sleep;
 
 public class CloudGoogleCalculatorPage extends YopmailPage {
     @FindBy(xpath = "//input[@id='input_98']")
@@ -116,9 +113,8 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
         return this;
     }
 
-    public CloudGoogleCalculatorPage addToEstimateBtn(){
+    public void addToEstimateBtn(){
         addToEstimate.click();
-        return this;
     }
 
     public String getEstimateTitle(){
@@ -131,12 +127,11 @@ public class CloudGoogleCalculatorPage extends YopmailPage {
                 .replace(" per 1 month", "");
     }
 
-    public CloudGoogleCalculatorPage emailEstimate(String emailAddress){
+    public void emailEstimate(String emailAddress){
         emailEstimate.click();
         setEmailAddress.click();
         setEmailAddress.sendKeys(emailAddress);
         sendEmail.click();
-        return  this;
     }
 }
 

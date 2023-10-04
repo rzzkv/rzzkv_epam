@@ -6,7 +6,6 @@ import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CloudGoogleCalculatorPage;
 
-
 public class CloudGoogleTest extends CommonConditions {
 
     @Test(groups = { "blocker", "google" })
