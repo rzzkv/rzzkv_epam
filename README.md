@@ -20,6 +20,7 @@ That's why I attempted to implement them in a separate utility class called 'Tab
 Therefore, I tried to add a separate class called 'EstimateModal' as a component.~~  
 ~~- However, it resulted in a 'NullPointerException' when calling~~    
 ~~- `estimateModal.checkPriceIsCalculated(totalEstimateCostTxt).`~~
+
 3. I attempted to write locators in the following format, as it is more logically correct and would be useful for scaling.  
 It worked when I tried it in a separate test, but didn't work in the 'CalculatorPage' class.  
 Said that data.seriesValue has to be constant, however it was final  
