@@ -8,7 +8,7 @@
 
 // Things to improve:  
 // add additional unit tests or separate to small tests  
-// delete test  from emailPage  
+// delete test from emailPage  
 // our main service test depends on email service  
 
 Things to discuss on the call:\

@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CloudGoogleCalculatorPage;
@@ -31,8 +30,10 @@ public class CloudGoogleTest extends CommonConditions {
                 .setSSDValue()
                 .setLocation()
                 .setUsageValue()
-                .addToEstimateBtn()
-                .checkPriceIsCalculated(data.totalEstimateCostText);
+                .addToEstimateBtn();
+
+        String estimateTitle = cloudGoogleCalculator.getEstimateTitle();
+        Assertions.assertTrue(estimateTitle.contains(data.totalEstimateCostText));
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
         tab.createNewTab(driver);
