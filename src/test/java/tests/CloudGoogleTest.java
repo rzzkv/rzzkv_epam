@@ -15,7 +15,6 @@ public class CloudGoogleTest extends CommonConditions {
         CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
         YopmailPage yopmail = new YopmailPage(driver);
 
-
         cloudGoogle
                 .open(TestData.URL_CLOUD_GOOGLE)
                 .searchGivenValue(TestData.searchValue)
@@ -28,10 +27,10 @@ public class CloudGoogleTest extends CommonConditions {
                 .setMachineType(TestData.machineTypeValue)
                 .addGPU()
                 .selectGPUType(TestData.gpuTypeValue)
-                .selectGPUNumber(TestData.gpuNumberValue)
+                .selectGPUNumber(TestData.gpuNumberByText)
                 .setSSDValue(TestData.ssdValue)
-                .setLocation(TestData.locationValue)
-                .setUsageValue(TestData.usageValue)
+//                .setLocation(TestData.locationValue)
+                .setUsageValue(TestData.usageId)
                 .addToEstimateBtn();
 
         String estimateTitle = cloudGoogleCalculator.getEstimateTitle();
@@ -39,9 +38,7 @@ public class CloudGoogleTest extends CommonConditions {
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
         tab.createNewTab(driver);
-        yopmail
-                .open(TestData.URL_EMAIL)
-                .createRandomEmail();
+        yopmail.createRandomEmail(TestData.URL_RANDOM_EMAIL);
         String emailAddress = yopmail.getEmailAddress();
 
         tab.switchToMainTab(driver);
@@ -55,24 +52,6 @@ public class CloudGoogleTest extends CommonConditions {
         String mailMessage = yopmail.getEmailMessage();
 
         softly.assertThat(mailMessage.contains(totalCost));
-    }
-
-    @Test
-    public void test(){
-        CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
-
-        driver.get("https://cloud.google.com/products/calculator");
-        cloudGoogleCalculator
-                .calculatorPageFrame(driver, TestData.iFrameXpath, TestData.iFrameId)
-                .setNumberOfInstances(TestData.instanceValue)
-                .setSeries(TestData.seriesValue)
-                .setMachineType(TestData.machineTypeValue)
-                .addGPU()
-                .selectGPUType(TestData.gpuTypeValue)
-                .selectGPUNumber(TestData.gpuNumberValue)
-                .setSSDValue(TestData.ssdValue)
-                .setLocation(TestData.locationValue)
-                .setUsageValue(TestData.usageValue);
     }
 }
 

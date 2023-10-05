@@ -13,8 +13,7 @@ public class YopmailTest extends CommonConditions {
     public void createRandomEmailTest() throws IOException {
         YopmailPage yopmail = new YopmailPage(driver);
         yopmail
-                .open(TestData.URL_EMAIL)
-                .createRandomEmail();
+                .createRandomEmail(TestData.URL_RANDOM_EMAIL);
         String emailAddress = yopmail.getEmailAddress();
 
         Assertions.assertTrue(emailAddress.contains("@yopmail.com"));

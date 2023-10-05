@@ -30,17 +30,8 @@ public class YopmailPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public YopmailPage open(String URL) {
+    public void createRandomEmail(String URL) {
         driver.get(URL);
-        return this;
-    }
-
-    public void createRandomEmail() {
-        randomEmail.click();
-//  need this "if" because of full page ad
-        if(adFrame.isEnabled()) {
-            driver.get("https://yopmail.com/en/email-generator");
-        }
     }
 
     public String getEmailAddress() {

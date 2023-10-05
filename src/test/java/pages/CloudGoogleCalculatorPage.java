@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Utility;
 
-public class CloudGoogleCalculatorPage extends YopmailPage{
+public class CloudGoogleCalculatorPage extends BasePage {
     @FindBy(id = "input_98")
     private WebElement numberOfInstances;
     @FindBy(id = "select_123")
@@ -16,21 +16,21 @@ public class CloudGoogleCalculatorPage extends YopmailPage{
     private final static String MACHINE_TYPE_SET = "//md-option[@value='%s']";
     @FindBy(xpath = "//div[@class='md-label'][contains(text(), 'Add GPUs.')]")
     private WebElement gpu;
-    @FindBy(id = "select_510")
+    @FindBy(id = "select_505")
     private WebElement gpuType;
     private final static String GPU_TYPE_SET = "//md-option[@value='%s']";
-    @FindBy(id = "select_512")
+    @FindBy(id = "select_507")
     private WebElement gpuNumber;
-    private final static String GPU_NUMBER_SET = "//md-option[@value='%s']";
+    private final static String GPU_NUMBER_SET = "//md-option[.//div[normalize-space(text())='%s']]";
     @FindBy(id = "select_464")
     private WebElement ssd;
-    private final static String SSD_VALUE_SET = "//md-option[@value='%s']";
+    private final static String SSD_VALUE_SET = "//md-option[@ng-repeat=\"item in listingCtrl.dynamicSsd.computeServer\" and @value=\"%s\"]";
     @FindBy(id = "select_131")
     private WebElement location;
     private final static String LOCATION_VALUE_SET = "//md-option[@value='%s']";
     @FindBy(id = "select_138")
     private WebElement usage;
-    private final static String USAGE_VALUE_SET = "//md-option[@value='%s']";
+    private final static String USAGE_VALUE_SET = "//md-option[@id='%s']";
     @FindBy(xpath = "//md-card-content[@id='resultBlock']")
     private WebElement checkEstimateExist;
     @FindBy(xpath = "//div[contains(@class, 'layout-align-end-start')]/button[contains(@class, 'cpc-button')]")
