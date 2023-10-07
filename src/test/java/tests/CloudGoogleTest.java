@@ -21,7 +21,7 @@ public class CloudGoogleTest extends CommonConditions {
                 .openCalculator();
 
         cloudGoogleCalculator
-                .calculatorPageFrame(driver, TestData.iFrameXpath, TestData.iFrameId)
+                .calculatorPageFrame(driver)
                 .setNumberOfInstances(TestData.instanceValue)
                 .setSeries(TestData.seriesValue)
                 .setMachineType(TestData.machineTypeValue)
@@ -34,7 +34,7 @@ public class CloudGoogleTest extends CommonConditions {
                 .addToEstimateBtn();
 
         String estimateTitle = cloudGoogleCalculator.getEstimateTitle();
-        softly.assertThat(estimateTitle.contains(TestData.totalEstimateCostText));
+        softly.assertThat(estimateTitle).contains(TestData.totalEstimateCostText);
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
         tab.createNewTab(driver);
@@ -43,7 +43,7 @@ public class CloudGoogleTest extends CommonConditions {
 
         tab.switchToMainTab(driver);
         cloudGoogleCalculator
-                .calculatorPageFrame(driver, TestData.iFrameXpath, TestData.iFrameId)
+                .calculatorPageFrame(driver)
                 .emailEstimateBtn()
                 .setEmailAddress(emailAddress)
                 .sendEmailBtn();
@@ -51,7 +51,8 @@ public class CloudGoogleTest extends CommonConditions {
         tab.switchToSecondTab(driver);
         String mailMessage = yopmail.getEmailMessage();
 
-        softly.assertThat(mailMessage.contains(totalCost));
+        softly.assertThat(mailMessage).contains(totalCost);
+        softly.assertAll();
     }
 }
 

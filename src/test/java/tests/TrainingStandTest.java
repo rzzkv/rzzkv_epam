@@ -14,7 +14,7 @@ public class TrainingStandTest extends CommonConditions {
 
         driver.get("https://cloud.google.com/products/calculator");
         cloudGoogleCalculator
-                .calculatorPageFrame(driver, TestData.iFrameXpath, TestData.iFrameId)
+                .calculatorPageFrame(driver)
                 .setNumberOfInstances(TestData.instanceValue)
                 .setSeries(TestData.seriesValue)
                 .setMachineType(TestData.machineTypeValue)
@@ -31,7 +31,7 @@ public class TrainingStandTest extends CommonConditions {
         CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
         driver.get("https://cloud.google.com/products/calculator");
         cloudGoogleCalculator
-                .calculatorPageFrame(driver, TestData.iFrameXpath, TestData.iFrameId)
+                .calculatorPageFrame(driver)
                 .setNumberOfInstances(TestData.instanceValue)
                 .setSeries(TestData.seriesValue)
                 .setMachineType(TestData.machineTypeValue)
@@ -53,7 +53,7 @@ public class TrainingStandTest extends CommonConditions {
         CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
         driver.get("https://cloud.google.com/products/calculator");
         cloudGoogleCalculator
-                .calculatorPageFrame(driver, TestData.iFrameXpath, TestData.iFrameId)
+                .calculatorPageFrame(driver)
                 .setNumberOfInstances(TestData.instanceValue)
                 .setSeries(TestData.seriesValue)
                 .setMachineType(TestData.machineTypeValue)

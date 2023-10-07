@@ -6,6 +6,10 @@ import org.openqa.selenium.support.PageFactory;
 import utils.Utility;
 
 public class CloudGoogleCalculatorPage extends BasePage {
+
+    public static final String iFrameXpath = "//iframe[contains(@src,'frame/products/calculator/index')]";
+    public static final String iFrameId = "myFrame";
+
     @FindBy(id = "input_98")
     private WebElement numberOfInstances;
     @FindBy(id = "select_123")
@@ -49,9 +53,9 @@ public class CloudGoogleCalculatorPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public CloudGoogleCalculatorPage calculatorPageFrame(WebDriver driver,String xpath, String id){
-        Utility.iFrameXpath(driver, xpath);
-        Utility.iFrameId(driver, id);
+    public CloudGoogleCalculatorPage calculatorPageFrame(WebDriver driver){
+        Utility.iFrameXpath(driver, iFrameXpath);
+        Utility.iFrameId(driver, iFrameId);
         return this;
     }
 
