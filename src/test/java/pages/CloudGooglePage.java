@@ -18,12 +18,12 @@ public class CloudGooglePage extends YopmailPage {
         PageFactory.initElements(driver, this);
     }
 
-    public CloudGooglePage open(String URL){
+    public CloudGooglePage open(String URL) {
         driver.get(URL);
         return this;
     }
 
-//    Решил в итоге не разделять этот метод, т.к эти 3 действия всегда будут вместе, просто поменял названия
+    //    Решил в итоге не разделять этот метод, т.к эти 3 действия всегда будут вместе, просто поменял названия
     public CloudGooglePage searchGivenValue(String searchValue) {
         searchElement.click();
         searchElement.sendKeys(searchValue);
@@ -33,5 +33,9 @@ public class CloudGooglePage extends YopmailPage {
 
     public void openCalculator() {
         calculatorLink.click();
+    }
+
+    public String getCalculatorLinkText() {
+        return calculatorLink.getText();
     }
 }

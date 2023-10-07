@@ -1,6 +1,6 @@
 package tests;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CloudGoogleCalculatorPage;
@@ -9,7 +9,20 @@ import tests.helpers.TestData;
 
 public class CloudGoogleTest extends CommonConditions {
 
-    @Test
+
+    @Test(groups = { "blocker", "google" })
+    public void calculatorSearchTest(){
+        CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
+
+        cloudGoogle
+                .open(TestData.URL_CLOUD_GOOGLE)
+                .searchGivenValue(TestData.searchValue);
+        String mailMessage = cloudGoogle.getCalculatorLinkText();
+
+        softly.assertThat(mailMessage).isEqualTo(TestData.CalculatorLinkText);
+    }
+
+    @Test(groups = { "blocker", "main" })
     public void googleCloudCalculatorTest() throws InterruptedException {
         CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
         CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
@@ -29,7 +42,6 @@ public class CloudGoogleTest extends CommonConditions {
                 .selectGPUType(TestData.gpuTypeValue)
                 .selectGPUNumber(TestData.gpuNumberByText)
                 .setSSDValue(TestData.ssdValue)
-//                .setLocation(TestData.locationValue)
                 .setUsageValue(TestData.usageId)
                 .addToEstimateBtn();
 

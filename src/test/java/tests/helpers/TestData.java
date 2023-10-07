@@ -13,6 +13,7 @@ public class TestData {
     public static final String gpuNumberByText = "1";
     public static final String ssdValue = "2";
     public static final String usageId = "select_option_136";
+    public static final String CalculatorLinkText = "Google Cloud Pricing Calculator";
 
 
 }

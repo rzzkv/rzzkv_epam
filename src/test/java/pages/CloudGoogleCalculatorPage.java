@@ -9,20 +9,18 @@ public class CloudGoogleCalculatorPage extends BasePage {
 
     public static final String iFrameXpath = "//iframe[contains(@src,'frame/products/calculator/index')]";
     public static final String iFrameId = "myFrame";
+    private final static String BY_VALUE = "//md-option[@value='%s']";
 
     @FindBy(id = "input_98")
     private WebElement numberOfInstances;
     @FindBy(id = "select_123")
     private WebElement series;
-    private final static String SERIES_TYPE_SET = "//md-option[@value='%s']";
     @FindBy(id = "select_125")
     private WebElement machineType;
-    private final static String MACHINE_TYPE_SET = "//md-option[@value='%s']";
     @FindBy(xpath = "//div[@class='md-label'][contains(text(), 'Add GPUs.')]")
     private WebElement gpu;
     @FindBy(id = "select_505")
     private WebElement gpuType;
-    private final static String GPU_TYPE_SET = "//md-option[@value='%s']";
     @FindBy(id = "select_507")
     private WebElement gpuNumber;
     private final static String GPU_NUMBER_SET = "//md-option[.//div[normalize-space(text())='%s']]";
@@ -67,14 +65,14 @@ public class CloudGoogleCalculatorPage extends BasePage {
     public CloudGoogleCalculatorPage setSeries(String value){
         series.click();
         driver.findElement(
-                By.xpath(String.format(SERIES_TYPE_SET, value))).click();
+                By.xpath(String.format(BY_VALUE, value))).click();
         return this;
     }
 
     public CloudGoogleCalculatorPage setMachineType(String value){
         machineType.click();
         driver.findElement(
-                By.xpath(String.format(MACHINE_TYPE_SET, value))).click();
+                By.xpath(String.format(BY_VALUE, value))).click();
         return this;
     }
 
@@ -86,7 +84,7 @@ public class CloudGoogleCalculatorPage extends BasePage {
     public CloudGoogleCalculatorPage selectGPUType(String value){
         gpuType.click();
         driver.findElement(
-                By.xpath(String.format(GPU_TYPE_SET, value))).click();
+                By.xpath(String.format(BY_VALUE, value))).click();
         return this;
     }
 
@@ -107,7 +105,7 @@ public class CloudGoogleCalculatorPage extends BasePage {
     public CloudGoogleCalculatorPage setLocation(String value){
         location.click();
         driver.findElement(
-                By.xpath(String.format(LOCATION_VALUE_SET, value))).click();
+                By.xpath(String.format(BY_VALUE, value))).click();
         return this;
     }
 
