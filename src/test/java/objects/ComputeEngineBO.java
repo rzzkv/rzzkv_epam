@@ -1,3 +1,5 @@
+package objects;
+
 import java.util.Objects;
 
 public class ComputeEngineBO {
@@ -21,12 +23,43 @@ public class ComputeEngineBO {
         this.location = location;
         this.usage = usage;
     }
-// Do I need setters and getters here?
+
+    public String getNumberOfInstances() {
+        return numberOfInstances;
+    }
+
+    public String getSeries() {
+        return series;
+    }
+
+    public String getMachineType() {
+        return machineType;
+    }
+
+    public String getGpuType() {
+        return gpuType;
+    }
+
+    public String getGpuNumber() {
+        return gpuNumber;
+    }
+
+    public String getSsd() {
+        return ssd;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getUsage() {
+        return usage;
+    }
 
     /*
-        equals(Object o) method can determine whether two ComputeEngineBO objects are equal
-        based on their numberOfInstances and series fields.
-     */
+            equals(Object o) method can determine whether two ComputeEngineBO objects are equal
+            based on their numberOfInstances and series fields.
+         */
     @Override
     public boolean equals(Object o){
         if(this == o){

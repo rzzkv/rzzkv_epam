@@ -27,7 +27,7 @@ public class Utility {
     public void takeScreenShot(WebDriver driver) throws IOException {
         File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         String time = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss-aa").format(new Date());
-        String fileWithPath = "./resources/screenshots/" + time + ".png";
+        String fileWithPath = "./screenshots/" + time + ".png";
         FileUtils.copyFile(screenshotFile, new File(fileWithPath));
     }
 }

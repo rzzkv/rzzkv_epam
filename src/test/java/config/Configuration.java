@@ -12,11 +12,6 @@ public interface Configuration extends Config {
 
     @Key("environment")
     String environment();
-    @Key("${environment}.browser")
+    @Key("browser")
     String browser();
-    @Key("${environment}.cloud_url")
-    String cloudUrl();
-    @Key("${environment}.email_url")
-    String emailUrl();
-
 }
