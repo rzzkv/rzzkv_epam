@@ -8,7 +8,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.CloudGooglePage;
 import utils.Tab;
 import utils.Utility;
 
@@ -17,7 +16,8 @@ import java.time.Duration;
 
 abstract public class CommonConditions {
 
-    //проблема с этой строкой, без не работают тест сюиты
+    //protected static WebDriver driver = null; //было бы логично сделать
+    //проблема с этой строкой, без нее не работают тест сюиты
     protected static WebDriver driver = new ChromeDriver();
     protected SoftAssertions softly = new SoftAssertions();
     protected Tab tab = new Tab();
@@ -27,13 +27,14 @@ abstract public class CommonConditions {
     @BeforeMethod
     public void setUp() {
         PropertiesFile.getProperties();
-
         if (browserName.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
             driver = new ChromeDriver();
         } else if (browserName.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.gecko.driver","/usr/local/bin/geckodriver");
             driver = new FirefoxDriver();
+        }else { // default browser
+            System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));

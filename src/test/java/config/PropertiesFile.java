@@ -6,14 +6,11 @@ import java.util.Properties;
 
 public class PropertiesFile {
 
-    static Properties properties = new Properties();
-    public static void main(String[] args) {
-        setProperties();
-    }
+    public static Properties properties = new Properties();
 
     public static void getProperties(){
         try {
-            InputStream input = new FileInputStream("src/test/resources/config.properties");
+            InputStream input = new FileInputStream("src/test/resources/properties/config.properties");
             properties.load(input);
             CommonConditions.browserName = properties.getProperty("browser");
         } catch (Exception e) {
@@ -25,7 +22,7 @@ public class PropertiesFile {
 
     public static void setProperties(){
         try {
-            OutputStream output = new FileOutputStream("src/test/resources/config.properties");
+            OutputStream output = new FileOutputStream("src/test/resources/properties/config.properties");
             properties.setProperty("browser","chrome");
             properties.store(output, null);
         } catch (Exception e) {

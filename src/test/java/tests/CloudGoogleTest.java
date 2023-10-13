@@ -12,6 +12,7 @@ public class CloudGoogleTest extends CommonConditions {
 
     @Test(groups = { "blocker", "google" })
     public void calculatorSearchTest(){
+        CommonConditions.browserName = "firefox";
         CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
 
         cloudGoogle

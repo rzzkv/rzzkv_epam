@@ -1,6 +1,5 @@
 package tests;
 
-import config.PropertiesFile;
 import org.testng.annotations.Test;
 import pages.YopmailPage;
 import tests.helpers.CommonConditions;
