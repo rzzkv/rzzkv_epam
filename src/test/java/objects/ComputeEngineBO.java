@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class ComputeEngineBO {
 
-    private final String numberOfInstances;
-    private final String series;
-    private final String machineType;
-    private final String gpuType;
-    private final String gpuNumber;
-    private final String ssd;
-    private final String location;
-    private final String usage;
+    private String numberOfInstances;
+    private String series;
+    private String machineType;
+    private String gpuType;
+    private String gpuNumber;
+    private String ssd;
+    private String location;
+    private String usage;
 
     public ComputeEngineBO(String numberOfInstances, String series, String machineType, String gpuType, String gpuNumber, String ssd, String location, String usage){
         this.numberOfInstances = numberOfInstances;
