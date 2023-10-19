@@ -8,7 +8,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import utils.Tab;
 import utils.Utility;
 
 import java.io.IOException;
@@ -17,10 +16,9 @@ import java.time.Duration;
 abstract public class CommonConditions {
 
     //protected static WebDriver driver = null; //было бы логично сделать
-    //проблема с этой строкой, без нее не работают тест сюиты
+    //проблема с этой строкой, без нее не работают тест сюиты, но с ней открывается два браузера
     protected static WebDriver driver = new ChromeDriver();
     protected SoftAssertions softly = new SoftAssertions();
-    protected Tab tab = new Tab();
     protected Utility utility=new Utility(driver);
     public static String browserName = null;
 

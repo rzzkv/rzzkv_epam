@@ -50,18 +50,18 @@ public class CloudGoogleTest extends CommonConditions {
         softly.assertThat(estimateTitle).contains(TestData.totalEstimateCostText);
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
-        tab.createNewTab(driver);
+        utility.createNewTab(driver);
         yopmail.createRandomEmail(TestData.URL_RANDOM_EMAIL);
         String emailAddress = yopmail.getEmailAddress();
 
-        tab.switchToMainTab(driver);
+        utility.switchToMainTab(driver);
         cloudGoogleCalculator
                 .calculatorPageFrame(driver)
                 .emailEstimateBtn()
                 .setEmailAddress(emailAddress)
                 .sendEmailBtn();
 
-        tab.switchToSecondTab(driver);
+        utility.switchToSecondTab(driver);
         String mailMessage = yopmail.getEmailMessage();
 
         softly.assertThat(mailMessage).contains(totalCost);
