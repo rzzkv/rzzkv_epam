@@ -24,14 +24,15 @@ public class CloudGoogleTest extends CommonConditions {
 
     @Test(groups = { "blocker", "main" })
     public void googleCloudCalculatorTest() throws InterruptedException {
-        CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
-        CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
+        CloudGooglePage cloudGoogle = CloudGooglePage.init(driver);
+//        CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
         YopmailPage yopmail = new YopmailPage(driver);
 
         cloudGoogle
-                .open(TestData.URL_CLOUD_GOOGLE)
-                .searchGivenValue(TestData.searchValue)
-                .openCalculator();
+//                .open(TestData.URL_CLOUD_GOOGLE)
+                .searchGivenValue(TestData.searchValue);
+
+        CloudGoogleCalculatorPage cloudGoogleCalculator = cloudGoogle.openCalculator();
 
         cloudGoogleCalculator
                 .calculatorPageFrame(driver)

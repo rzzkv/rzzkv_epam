@@ -1,5 +1,6 @@
 package pages;
 
+import helpers.TestData;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,13 @@ public class CloudGooglePage extends YopmailPage {
         PageFactory.initElements(driver, this);
     }
 
+   public static CloudGooglePage init(WebDriver driver){
+       CloudGooglePage page = new CloudGooglePage(driver);
+       page.open(TestData.URL_CLOUD_GOOGLE);
+       //Проверить заголовок
+       return page;
+   }
+
     public CloudGooglePage open(String URL) {
         driver.get(URL);
         return this;
@@ -31,8 +39,12 @@ public class CloudGooglePage extends YopmailPage {
         return this;
     }
 
-    public void openCalculator() {
+    public CloudGoogleCalculatorPage openCalculator() {
         calculatorLink.click();
+         CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
+         //проверить страницу
+
+        return cloudGoogleCalculator;
     }
 
     public String getCalculatorLinkText() {

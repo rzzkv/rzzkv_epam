@@ -15,7 +15,8 @@ abstract public class CommonConditions {
 
     protected WebDriver driver;
     protected SoftAssertions softly = new SoftAssertions();
-    protected Utility utility=new Utility(driver);
+    protected Utility utility=new Utility();
+//    protected Utility utility=new Utility(driver);
 
     PricingCalculatorPageConfiguration pageConfiguration;
     @BeforeClass()

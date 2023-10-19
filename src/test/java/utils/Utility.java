@@ -10,10 +10,10 @@ import java.util.Date;
 import java.util.Set;
 
 public class Utility {
-    static WebDriver driver;
-    public Utility(WebDriver driver){
-        Utility.driver = driver;
-    }
+//    static WebDriver driver;
+//    public Utility(WebDriver driver){
+//        Utility.driver = driver;
+//    }
     public static void iFrameXpath(WebDriver driver, String xpath){
         driver.switchTo().frame(driver.findElement(By.xpath(xpath)));
     }

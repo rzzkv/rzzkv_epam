@@ -25,6 +25,7 @@ dependencies {
 }
 
 test {
+    systemProperty 'environment', 'notSet'
     useTestNG()
 }
 
