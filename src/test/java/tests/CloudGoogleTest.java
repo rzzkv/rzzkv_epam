@@ -4,15 +4,14 @@ import org.testng.annotations.Test;
 import pages.CloudGooglePage;
 import pages.YopmailPage;
 import pages.CloudGoogleCalculatorPage;
-import tests.helpers.CommonConditions;
-import tests.helpers.TestData;
+import helpers.CommonConditions;
+import helpers.TestData;
 
 public class CloudGoogleTest extends CommonConditions {
 
 
     @Test(groups = { "blocker", "google" })
     public void calculatorSearchTest(){
-        CommonConditions.browserName = "firefox";
         CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
 
         cloudGoogle

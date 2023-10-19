@@ -1,27 +1,27 @@
 package objects;
 
+import helpers.TestDataReader;
+
 import java.util.Objects;
 
 public class ComputeEngineBO {
 
-    private String numberOfInstances;
-    private String series;
-    private String machineType;
-    private String gpuType;
-    private String gpuNumber;
-    private String ssd;
-    private String location;
-    private String usage;
+    private static String numberOfInstances = TestDataReader.getTestData("calculator.numberOfInstances");
+    private static String series = TestDataReader.getTestData("calculator.series");
+    private static String machineType = TestDataReader.getTestData("calculator.machineType");
+    private static String gpuNumber = TestDataReader.getTestData("calculator.numberOfGPU");
+    private static String gpuType = TestDataReader.getTestData("calculator.typeOfGPU");
+    private static String ssd = TestDataReader.getTestData("calculator.localSSD");
+    private static String usage = TestDataReader.getTestData("calculator.committedUsage");
 
     public ComputeEngineBO(String numberOfInstances, String series, String machineType, String gpuType, String gpuNumber, String ssd, String location, String usage){
-        this.numberOfInstances = numberOfInstances;
-        this.series = series;
-        this.machineType = machineType;
-        this.gpuType = gpuType;
-        this.gpuNumber = gpuNumber;
-        this.ssd = ssd;
-        this.location = location;
-        this.usage = usage;
+        ComputeEngineBO.numberOfInstances = numberOfInstances;
+        ComputeEngineBO.series = series;
+        ComputeEngineBO.machineType = machineType;
+        ComputeEngineBO.gpuType = gpuType;
+        ComputeEngineBO.gpuNumber = gpuNumber;
+        ComputeEngineBO.ssd = ssd;
+        ComputeEngineBO.usage = usage;
     }
 
     public String getNumberOfInstances() {
@@ -48,12 +48,13 @@ public class ComputeEngineBO {
         return ssd;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
     public String getUsage() {
         return usage;
+    }
+
+    public static ComputeEngineBO createWithProperty() {
+        return new ComputeEngineBO(numberOfInstances,  series,
+                machineType, machineType, gpuType, gpuNumber, ssd, usage);
     }
 
     /*
@@ -74,7 +75,6 @@ public class ComputeEngineBO {
                     && Objects.equals(gpuType, that.gpuType)
                     && Objects.equals(gpuNumber, that.gpuNumber)
                     && Objects.equals(ssd, that.ssd)
-                    && Objects.equals(location, that.location)
                     && Objects.equals(usage, that.usage);
         }
 

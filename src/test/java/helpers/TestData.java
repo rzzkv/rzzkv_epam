@@ -1,4 +1,4 @@
-package tests.helpers;
+package helpers;
 
 public class TestData {
 

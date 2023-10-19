@@ -2,8 +2,8 @@ package tests;
 
 import org.testng.annotations.Test;
 import pages.YopmailPage;
-import tests.helpers.CommonConditions;
-import tests.helpers.TestData;
+import helpers.CommonConditions;
+import helpers.TestData;
 
 public class YopmailTest extends CommonConditions {
 
