@@ -11,26 +11,26 @@ public class CloudGoogleCalculatorPage extends BasePage {
     public static final String iFrameId = "myFrame";
     private final static String BY_VALUE = "//md-option[@value='%s']";
 
-    @FindBy(id = "input_98")
+    @FindBy(id = "input_99")
     private WebElement numberOfInstances;
-    @FindBy(id = "select_123")
+    @FindBy(id = "select_124")
     private WebElement series;
-    @FindBy(id = "select_125")
+    @FindBy(id = "select_126")
     private WebElement machineType;
     @FindBy(xpath = "//div[@class='md-label'][contains(text(), 'Add GPUs.')]")
     private WebElement gpu;
-    @FindBy(id = "select_505")
+    @FindBy(id = "select_506")
     private WebElement gpuType;
-    @FindBy(id = "select_507")
+    @FindBy(id = "select_508")
     private WebElement gpuNumber;
     private final static String GPU_NUMBER_SET = "//md-option[.//div[normalize-space(text())='%s']]";
-    @FindBy(id = "select_464")
+    @FindBy(id = "select_465")
     private WebElement ssd;
     private final static String SSD_VALUE_SET = "//md-option[@ng-repeat=\"item in listingCtrl.dynamicSsd.computeServer\" and @value=\"%s\"]";
-    @FindBy(id = "select_131")
+    @FindBy(id = "select_132")
     private WebElement location;
     private final static String LOCATION_VALUE_SET = "//md-option[@value='%s']";
-    @FindBy(id = "select_138")
+    @FindBy(id = "select_139")
     private WebElement usage;
     private final static String USAGE_VALUE_SET = "//md-option[@id='%s']";
     @FindBy(xpath = "//md-card-content[@id='resultBlock']")

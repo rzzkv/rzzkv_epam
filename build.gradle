@@ -19,7 +19,8 @@ dependencies {
             "org.slf4j:slf4j-simple:2.0.0",
             'org.assertj:assertj-core:3.24.2',
             'commons-io:commons-io:2.13.0',
-            'org.aeonbits.owner:owner:1.0.12'
+            'org.aeonbits.owner:owner:1.0.12',
+            'io.github.bonigarcia:webdrivermanager:5.5.3'
     )
 }
 
