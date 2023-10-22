@@ -1,9 +1,12 @@
 package pages;
 
+import helpers.TestData;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Utility;
+
+import static org.testng.AssertJUnit.assertTrue;
 
 public class CloudGoogleCalculatorPage extends BasePage {
 
@@ -116,12 +119,18 @@ public class CloudGoogleCalculatorPage extends BasePage {
         return this;
     }
 
-    public void addToEstimateBtn(){
+    public CloudGoogleCalculatorPage addToEstimateBtn(){
         addToEstimate.click();
+        return this;
     }
 
     public String getEstimateTitle(){
         return checkEstimateExist.getText();
+    }
+
+    public void checkEstimateAdded(){
+        String estimateTitle = getEstimateTitle();
+        assertTrue(estimateTitle.contains(TestData.totalEstimateCostText));
     }
 
     public String getTotalCost() {

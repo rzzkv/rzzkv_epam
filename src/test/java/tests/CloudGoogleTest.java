@@ -44,10 +44,12 @@ public class CloudGoogleTest extends CommonConditions {
                 .selectGPUNumber(TestData.gpuNumberByText)
                 .setSSDValue(TestData.ssdValue)
                 .setUsageValue(TestData.usageId)
-                .addToEstimateBtn();
+                .addToEstimateBtn()
+                .checkEstimateAdded();
 
-        String estimateTitle = cloudGoogleCalculator.getEstimateTitle();
-        softly.assertThat(estimateTitle).contains(TestData.totalEstimateCostText);
+//        String estimateTitle = cloudGoogleCalculator.getEstimateTitle();
+//        // move this assert to the CloudGoogleCalculatorPage in separate method
+//        softly.assertThat(estimateTitle).contains(TestData.totalEstimateCostText);
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
         utility.createNewTab(driver);
