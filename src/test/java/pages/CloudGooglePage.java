@@ -38,13 +38,13 @@ public class CloudGooglePage extends YopmailPage {
         searchElement.sendKeys(Keys.ENTER);
         return this;
     }
-
+//    return new CloudGoogleCalculatorPage(driver);
+//    т.к после вызова openCalculator() нас переносит на странцу CloudGoogleCalculatorPage
     public CloudGoogleCalculatorPage openCalculator() {
         calculatorLink.click();
-         CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
-         //проверить страницу
+        //проверить что страница появилась с assert get title
 
-        return cloudGoogleCalculator;
+        return new CloudGoogleCalculatorPage(driver);
     }
 
     public String getCalculatorLinkText() {

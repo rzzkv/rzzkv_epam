@@ -1,6 +1,5 @@
 plugins {
     id 'java-library'
-
 }
 
 
@@ -25,8 +24,9 @@ dependencies {
 }
 
 test {
-    systemProperty 'environment', 'notSet'
     useTestNG()
+    systemProperty 'environment', System.getProperty('environment', 'notSet')
+    systemProperty 'browser', System.getProperty('browser', 'notSet')
 }
 
 

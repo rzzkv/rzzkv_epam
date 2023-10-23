@@ -29,5 +29,5 @@ gradle test -Pbrowser=<BROWSER> -Penvironment=<ENVIRONMENT> -Dsurefire.suiteXmlF
 ```
 Example:
 ```bash
-gradle test -Pbrowser=chrome -Penvironment=test -Dsurefire.suiteXmlFiles=src/test/resources/suits/testng-all.xml
+gradle test -Dbrowser=chrome -Denvironment=test -Dsurefire.suiteXmlFiles=src/test/resources/suits/testng-all.xml
 ```

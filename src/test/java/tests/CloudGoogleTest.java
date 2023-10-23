@@ -24,17 +24,14 @@ public class CloudGoogleTest extends CommonConditions {
 
     @Test(groups = { "blocker", "main" })
     public void googleCloudCalculatorTest() throws InterruptedException {
-        CloudGooglePage cloudGoogle = CloudGooglePage.init(driver);
-//        CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
         YopmailPage yopmail = new YopmailPage(driver);
+        CloudGooglePage cloudGoogle = new CloudGooglePage(driver);
+        CloudGoogleCalculatorPage cloudGoogleCalculator = new CloudGoogleCalculatorPage(driver);
 
         cloudGoogle
-//                .open(TestData.URL_CLOUD_GOOGLE)
-                .searchGivenValue(TestData.searchValue);
-
-        CloudGoogleCalculatorPage cloudGoogleCalculator = cloudGoogle.openCalculator();
-
-        cloudGoogleCalculator
+                .open(TestData.URL_CLOUD_GOOGLE)
+                .searchGivenValue(TestData.searchValue)
+                .openCalculator()
                 .calculatorPageFrame(driver)
                 .setNumberOfInstances(TestData.instanceValue)
                 .setSeries(TestData.seriesValue)
@@ -46,16 +43,14 @@ public class CloudGoogleTest extends CommonConditions {
                 .setUsageValue(TestData.usageId)
                 .addToEstimateBtn()
                 .checkEstimateAdded();
-
-//        String estimateTitle = cloudGoogleCalculator.getEstimateTitle();
-//        // move this assert to the CloudGoogleCalculatorPage in separate method
-//        softly.assertThat(estimateTitle).contains(TestData.totalEstimateCostText);
         String totalCost = cloudGoogleCalculator.getTotalCost();
 
+//      создаем почту в новом окне в сервисе yopmail
         utility.createNewTab(driver);
         yopmail.createRandomEmail(TestData.URL_RANDOM_EMAIL);
         String emailAddress = yopmail.getEmailAddress();
 
+//      возвращаемся на основную страницу CloudGoogleCalculatorPage и отправляем Estimate на почту
         utility.switchToMainTab(driver);
         cloudGoogleCalculator
                 .calculatorPageFrame(driver)
@@ -63,6 +58,7 @@ public class CloudGoogleTest extends CommonConditions {
                 .setEmailAddress(emailAddress)
                 .sendEmailBtn();
 
+//      на странице почты получаем email
         utility.switchToSecondTab(driver);
         String mailMessage = yopmail.getEmailMessage();
 

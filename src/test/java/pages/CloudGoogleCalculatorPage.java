@@ -5,7 +5,6 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Utility;
-
 import static org.testng.AssertJUnit.assertTrue;
 
 public class CloudGoogleCalculatorPage extends BasePage {
