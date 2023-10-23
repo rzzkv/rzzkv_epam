@@ -1,6 +1,5 @@
 package pages;
 
-import helpers.TestData;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,27 +18,21 @@ public class CloudGooglePage extends YopmailPage {
         PageFactory.initElements(driver, this);
     }
 
-   public static CloudGooglePage init(WebDriver driver){
-       CloudGooglePage page = new CloudGooglePage(driver);
-       page.open(TestData.URL_CLOUD_GOOGLE);
-       //Проверить заголовок
-       return page;
-   }
-
     public CloudGooglePage open(String URL) {
         driver.get(URL);
         return this;
     }
 
-    //    Решил в итоге не разделять этот метод, т.к эти 3 действия всегда будут вместе, просто поменял названия
+//    Решил в итоге не разделять этот метод, т.к эти 3 действия всегда будут вместе, просто поменял названия
     public CloudGooglePage searchGivenValue(String searchValue) {
         searchElement.click();
         searchElement.sendKeys(searchValue);
         searchElement.sendKeys(Keys.ENTER);
         return this;
     }
-//    return new CloudGoogleCalculatorPage(driver);
-//    т.к после вызова openCalculator() нас переносит на странцу CloudGoogleCalculatorPage
+
+//  метод возвращает CloudGoogleCalculatorPage(driver);
+//  т.к после вызова openCalculator() нас переносит на странцу CloudGoogleCalculatorPage
     public CloudGoogleCalculatorPage openCalculator() {
         calculatorLink.click();
         //проверить что страница появилась с assert get title
